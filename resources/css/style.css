@@ -261,7 +261,7 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
   background-color: #1ed760;
   border-radius: 5px;
   height: 40px;
-  width: 150px;
+  min-width: 150px;
   padding: 0 10px;
   margin: 0;
 }
@@ -273,6 +273,10 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
   height: 100%;
   width: 100%;
   font-weight: 500;
+}
+.cfHeaderContentCtrl .drop-down-btn i {
+  font-size: 18px;
+  margin: 0px 5px;
 }
 .cfHeaderContentCtrl .drop-down-content {
   position: absolute;
@@ -303,7 +307,7 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
   right: 20px;
 }
 .cfHeaderContentCtrl .show {
-  max-height: 550px;
+  max-height: 600px;
 }
 .cfHeaderContentCtrl .company-logo {
   display: none;
@@ -313,6 +317,32 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
 }
 .cfHeaderContentCtrl .checkbox-container {
   flex-direction: column;
+}
+.cfHeaderContentCtrl .drop-down-menu {
+  width: 95%;
+  margin: auto;
+}
+.cfHeaderContentCtrl .drop-down-menu a:link,
+.cfHeaderContentCtrl .drop-down-menu a:visited {
+  display: block;
+  color: rgba(255, 255, 255, 0.52);
+  text-decoration: none;
+}
+.cfHeaderContentCtrl .drop-down-menu li {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 18px;
+  padding: 8px 5px;
+  border-bottom: solid 0.5px rgba(154, 168, 172, 0.36);
+  cursor: pointer;
+}
+.cfHeaderContentCtrl .drop-down-menu li:hover {
+  color: #fff;
+}
+.cfHeaderContentCtrl .drop-down-menu i {
+  margin-right: 10px;
+}
+.cfHeaderContentCtrl .drop-down-menu a:hover {
+  color: #fff;
 }
 @media only screen and (max-width: 991px) {
   .cfHeaderContentCtrl .header-company-logo {
