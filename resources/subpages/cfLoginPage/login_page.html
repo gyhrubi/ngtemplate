@@ -1,0 +1,47 @@
+<div ng-controller="login_pageCtrl" class="login_pageCtrl">
+	<div class="page-row row">       
+        <div class="page-wrapper col-xs-12 col-sm-8 col-md-6 col-lg-4">
+           
+            <h1 class="cf-box-pagetitle">Bejelentkezés</h1>
+            <div class="company-logo"></div>
+            
+            
+            <div class="field-container">
+                <div class="icon-container">
+                    <i class="ion-person field-icon"></i>
+                </div>
+                <input type="text" id="userNameInput" placeholder="Felhasználónév" class="login-field form-control" ng-focus="scrollTo('userNameInput')" ng-required="true">
+            </div>
+            <div class="field-container">
+               <div class="icon-container">
+                    <i class="ion-key field-icon"></i>
+                </div>
+                <input type="password" id="userPasswordInput" placeholder="Jelszó" class="login-field form-control" ng-focus="scrollTo('userPasswordInput')">
+            </div>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="isDomainUser">
+                <label for="isDomainUser" class="cf-checkbox-label">Tartományi felhasználó?</label>
+                <a href="#/forgotpassword">Elfelejtett jelszó?</a>
+            </div>
+            
+                        
+            <button class="btn btn-primary" ng-click="showError()">Belépés</button>
+            
+            <div class="link-container">
+                <a href="#/forgotpassword">Új felhasználó? <strong>Regisztráció</strong></a>
+            </div>
+            
+            <div class="login-result">
+                <p class="cf-main-error" ng-show="false">Error</p>       
+                <div class="spinner" ng-show="loading">
+                    <div class="dot1"></div>
+                    <div class="dot2"></div>
+                </div> 
+            </div>                
+            
+        </div>
+        
+    </div>
+         
+</div>

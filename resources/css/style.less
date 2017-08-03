@@ -1,0 +1,187 @@
+@import "https://fonts.googleapis.com/css?family=Roboto:400,500";
+@import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
+@companyLogoUrl: '../img/spotify-logo.png';
+
+/*
+@primColor: #00838f;
+@primColorDark: #005662;
+@primColorLight: #4fb3bf;
+@secColor: #00e5ff;
+@secColorLight: #6effff;
+@secColorDark: #00b2cc;
+@fontColorDark: rgba(0, 0, 0, 0.52);
+@fontColorLight: rgba(255, 255, 255, 0.54);
+@fontFamily: 'Roboto', sans-serif;
+*/
+
+
+@primColor: #607d8b;
+@primColorDark: #34515e;
+@primColorLight: #8eacbb;
+@secColor: rgb(30,215,96);//#26c6da;
+@secColorLight: #6ff9ff;
+@secColorDark: #0095a8;
+@fontColorDark: rgba(0, 0, 0, 0.54);
+@fontColorLight: rgba(255, 255, 255, 0.52);
+@fontFamily: 'Roboto', sans-serif;
+
+/*
+
+@primColor: #f06292;
+@primColorDark: #ba2d65;
+@primColorLight: #ff94c2;
+@secColor: #7986cb;
+@secColorLight: #aab6fe;
+@secColorDark: #49599a;
+@fontColorDark: rgba(0, 0, 0, 0.54);
+@fontColorLight: rgba(255, 255, 255, 0.52);
+@fontFamily: 'Roboto', sans-serif;
+*/
+/* --------------------------------------------- */
+/* BASIC SETUP */
+/* --------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* --------------------------------------------- */
+/* BASIC STYLE */
+/* --------------------------------------------- */
+.cf-header {
+    height: 70px;
+    background-color: @primColorDark;
+}
+
+.cf-navigation {
+    width: 250px;
+    background-color: @primColor;
+}
+.navbar-btn {
+    background-color: @secColor;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    flex-shrink: 0;    
+}
+.navbar-btn i{
+    font-size: 28px;
+    color: @fontColorDark;
+}
+/* --------------------------------------------- */
+/* FLEX LAYOUT */
+/* --------------------------------------------- */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.cf-header {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+}
+
+.navbar-btn-container {
+    height: 100%;
+    width: 70px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.cf-header-content {
+    height: 100%;
+    flex-grow: 1;
+}
+
+.cf-content {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;   
+}
+
+.cf-navigation {
+    flex-shrink: 0;
+}
+
+.cf-viewport {
+    flex-grow: 1;
+}
+
+/* --------------------------------------------- */
+/* MOBILE NAVBAR */
+/* --------------------------------------------- */
+.cf-content {
+    position: relative;
+}
+
+.cf-mobile-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 401;
+    transform: translateX(-250px);
+    transition: all .5s;
+    
+    .show {
+        transform: translateX(0px);
+    }
+}
+
+.cf-viewport:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+    z-index: 400;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.show-shadow .cf-viewport:before {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media only screen and (min-width: 991px) {
+ 
+    .show-shadow .cf-viewport:before {
+        opacity: 0;
+        visibility: hidden;
+    }
+}    
+
+@media only screen and (max-width: 991px) {
+ 
+    .cf-navigation {
+        .cf-mobile-navbar();
+    }  
+    
+    .cf-navigation.show {
+        transform: translateX(0px);
+    }
+    
+    .navbar-btn-container {
+        display: flex;
+    }
+}
+
+@import "cfstyle.less";
+@import "../subpages/cfHeaderContent/cf_header_content.less";
+@import "../subpages/cfNavigation/cf_navigation.less";
+@import "../subpages/cfLoginPage/login_page.less";

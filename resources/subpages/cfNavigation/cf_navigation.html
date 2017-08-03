@@ -1,0 +1,22 @@
+<script type="text/ng-template"  id="tree_item_link.html">
+
+    <input  id="{{data.id}}" type="checkbox" >   
+    <label for="{{data.id}}"><i class="{{data.icon}}"></i>{{data.name}}</label>
+      
+    <ul>
+        <li ng-repeat="data in data.nodes" ng-include="data.link ? 'tree_item_container.html' : 'tree_item_link.html'"></li>
+    </ul>
+
+</script>
+    
+<script type="text/ng-template"  id="tree_item_container.html">
+     <a href="{{data.route}}" ng-click="selectNavItem(data.id)" ng-class="{selected: selectedNavItem == data.id}" ><i class="{{data.icon}}"></i> {{data.name}}</a>
+</script>
+
+<div class="cf_navigationCtrl" ng-controller="cf_navigationCtrl">       
+       
+        <ul class="tree-list">
+            <li ng-repeat="data in navTree" ng-include="data.link ? 'tree_item_container.html' : 'tree_item_link.html'"></li>
+        </ul>
+        <h3>{{activeCheckbox.l1}}</h3>
+</div>

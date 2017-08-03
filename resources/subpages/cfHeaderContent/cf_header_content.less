@@ -1,0 +1,91 @@
+
+.cfHeaderContentCtrl {
+    
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 15px;
+    
+    .header-company-logo {
+        min-width: 200px;
+        height: 60px;
+        background-image: url('@{companyLogoUrl}');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 15px 0;
+    }
+    
+    .drop-down {
+        position: relative;
+        background-color: @secColor;
+        border-radius: 5px;
+        height: 40px;
+        width: 150px;
+        padding: 0 10px;
+        margin: 0;
+    }
+    
+    .drop-down-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+        font-weight: 500;
+    }
+    
+    .drop-down-content {
+        position: absolute;
+        z-index: 402;
+        max-height: 0px;
+        overflow: hidden;
+        width: 300px;
+        top: 45px;
+        right: 0;
+        transition: all 0.3s;
+    }
+    
+    .arrow-box {
+        position: relative;
+        margin-top: 15px;
+        background-color: @primColorDark;
+        border-radius: 5px;
+    }
+    
+    .arrow-box:before {
+        position: absolute;
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid @secColor;
+        top: -15px;
+        right: 20px;
+    }
+    
+    
+    .show {
+        max-height: 550px;
+    }
+    
+    .company-logo {
+        display: none;
+    }
+    
+    .page-wrapper {
+        width: 95%;
+    }
+    
+    .checkbox-container {
+        flex-direction: column;
+    }
+    
+    @media only screen and (max-width: 991px) {
+        .header-company-logo {min-width: 120px;}      
+    }
+}

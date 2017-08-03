@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="app">
+    <head>
+        <meta charset="UTF-8">
+        <meta id="viewport" name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1" />
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        
+        <!-- Custom styles -->
+        <link href="resources/css/style.css" type="text/css" rel="stylesheet">        
+
+        <!-- Angular -->
+        <script src="https://code.angularjs.org/1.4.6/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.6/angular-route.min.js"></script>
+
+        <title>Angular Template</title>
+ 
+    </head>
+    <body ng-controller="appCtrl">
+        <div class="cf-header">
+            <div class="navbar-btn-container">
+                <div class="navbar-btn" ng-click="toggleMobileNavBar()"><i class="ion-navicon-round"></i></div>
+            </div>            
+            <div class="cf-header-content" ng-include="'/resources/subpages/cfHeaderContent/cf_header_content.html'"></div>
+        </div>
+        <div class="cf-content" ng-class="showMobileNavBar ? 'show-shadow' : ''">
+            <div class="cf-navigation" ng-include="'/resources/subpages/cfNavigation/cf_navigation.html'" ng-class="showMobileNavBar ? 'show' : ''" ng-show="showLeftNav"></div>
+            <div class="cf-viewport" ng-view ng-click="showMobileNavBar ? toggleMobileNavBar() : ''"></div>
+        </div>
+        <div class="cf-footer" ng-show="cfFooter">           
+        </div>
+
+
+    </body>
+    <script src="resources/js/app.js"></script>
+    <script src="resources/subpages/cfNavigation/cf_navigation.js"></script>
+    <script src="resources/subpages/cfHeaderContent/cf_header_content.js"></script>
+    <script src="resources/subpages/cfLoginPage/login_page.js"></script>
+</html>

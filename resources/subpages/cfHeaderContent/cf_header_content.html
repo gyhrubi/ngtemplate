@@ -1,0 +1,16 @@
+<div class="cfHeaderContentCtrl" ng-controller="cfHeaderContentCtrl">
+    <div class="header-company-logo"></div>
+    <div class="drop-down">
+        <div class="drop-down-btn" ng-click="toggleDropDown()">
+            <i class="ion-person"></i>{{user.isAuthenticated ? user.username : 'Bejelentkezés'}}<i class="ion-arrow-down-b"></i>
+        </div>
+        
+        <div class="drop-down-content" ng-class="showDropDown ? 'show' : ''">
+            <div class="arrow-box">
+                <div class="loginDirective" ng-if="user.isAuthenticated ? false : true" ng-include="'/resources/subpages/cfLoginPage/login_page.html'"></div>
+            </div>         
+        </div>
+        
+    </div>
+    
+</div>
