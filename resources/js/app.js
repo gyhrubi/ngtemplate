@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute','kendo.directives']);
 
 app.config(['$routeProvider', function($routeProvider){
     
@@ -11,6 +11,7 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/test4', { templateUrl: 'resources/subpages/cfTestPage4/testpage4.html' })
     .when('/test5', { templateUrl: 'resources/subpages/cfTestPage5/testpage5.html' })
     .when('/forgottenpw', { templateUrl: 'resources/subpages/cfForgottenPw/cf_forgotten_pw.html' })
+    .when('/registration_page', { templateUrl: 'resources/subpages/cfRegistrationPage/registration_page.html' })
     
 }]);
 

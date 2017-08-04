@@ -100,6 +100,13 @@ app.controller('cf_navigationCtrl', ['$scope', function($scope){
                     link: true,
                     route: "#/forgottenpw"
                 },
+                {
+                    name: "Registration",
+                    id: "l53",
+                    icon: "ion-person-add",
+                    link: true,
+                    route: "#/registration_page"
+                },
             ]
         }
         
