@@ -9,13 +9,13 @@
                 <div class="icon-container">
                     <i class="ion-person field-icon"></i>
                 </div>
-                <input type="text" id="userNameInput" placeholder="Felhasználónév" class="login-field form-control" ng-focus="scrollTo('userNameInput')" ng-required="true">
+                <input type="text" id="userNameInput" placeholder="Felhasználónév" ng-model="fh" class="login-field form-control" ng-focus="scrollTo('userNameInput')" ng-required="true">
             </div>
             <div class="field-container">
                <div class="icon-container">
                     <i class="ion-key field-icon"></i>
                 </div>
-                <input type="password" id="userPasswordInput" placeholder="Jelszó" class="login-field form-control" ng-focus="scrollTo('userPasswordInput')">
+                <input type="password" id="userPasswordInput" placeholder="Jelszó" ng-model="jsz" class="login-field form-control" ng-focus="scrollTo('userPasswordInput')">
             </div>
             
             <div class="checkbox-container">
@@ -24,15 +24,15 @@
                 <a href="#/forgottenpw">Elfelejtett jelszó?</a>
             </div>
    
-            <button class="btn cf-primary" ng-click="showError()">Belépés</button>
+            <button class="btn cf-primary" ng-click="validateInputs() ? login() : ''">Belépés</button>
             
             <div class="link-container">
                 <a href="#/forgotpassword">Új felhasználó? <strong>Regisztráció</strong></a>
             </div>
             
             <div class="login-result">
-                <p class="cf-main-error" ng-show="false">Error</p>       
-                <div class="cf-spinner" ng-show="loading">
+                <p class="cf-main-error" ng-show="loginError">{{errorMessage}}</p>       
+                <div class="cf-spinner" ng-show="showLoading">
                     <div class="dot1"></div>
                     <div class="dot2"></div>
                 </div> 

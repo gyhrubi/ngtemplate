@@ -202,7 +202,7 @@ body {
   display: none;
 }
 .cf-checkbox + label {
-  font-size: 16px;
+  font-size: 14px;
   color: rgba(0, 0, 0, 0.52);
   font-family: 'Roboto', sans-serif;
   cursor: pointer;

@@ -13,6 +13,7 @@
         <!-- Angular -->
         <script src="https://code.angularjs.org/1.4.6/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.4.6/angular-route.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.6/angular-sanitize.min.js"></script>
 
         <title>Angular Template</title>
  
@@ -25,7 +26,7 @@
             <div class="cf-header-content" ng-include="'/resources/subpages/cfHeaderContent/cf_header_content.html'"></div>
         </div>
         <div class="cf-content" ng-class="showMobileNavBar ? 'show-shadow' : ''">
-            <div class="cf-navigation" ng-include="'/resources/subpages/cfNavigation/cf_navigation.html'" ng-class="showMobileNavBar ? 'show' : ''" ng-show="showLeftNav"></div>
+            <div class="cf-navigation" ng-include="'/resources/subpages/cfNavigation/cf_navigation.html'" ng-class="showMobileNavBar ? 'show' : ''" ng-show="showLeftNav && user.isAuthenticated"></div>
             <div class="cf-viewport" ng-view ng-click="showMobileNavBar ? toggleMobileNavBar() : ''"></div>
         </div>
         <div class="cf-footer" ng-show="cfFooter">           
@@ -33,6 +34,7 @@
 
 
     </body>
+    <script src="resources/js/app.config.js"></script>
     <script src="resources/js/app.js"></script>
     <script src="resources/subpages/cfNavigation/cf_navigation.js"></script>
     <script src="resources/subpages/cfHeaderContent/cf_header_content.js"></script>

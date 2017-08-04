@@ -2,7 +2,7 @@
     <div class="header-company-logo"></div>
     <div class="drop-down">
         <div class="drop-down-btn" ng-click="toggleDropDown()">
-            <i class="" ng-class="user.isAuthenticated ? 'ion-person' : 'ion-log-in'"></i>{{user.isAuthenticated ? user.username : 'Bejelentkezés'}}<i class="ion-arrow-down-b"></i>
+            <i class="" ng-class="user.isAuthenticated ? 'ion-person' : 'ion-log-in'"></i>{{user.isAuthenticated ? user.fullname : 'Bejelentkezés'}}<i class="ion-arrow-down-b"></i>
         </div>
         
         <div class="drop-down-content" ng-class="showDropDown ? 'show' : ''">
@@ -13,7 +13,7 @@
                         <li><a href="#/myprofile"><i class="ion-person"></i>Saját fiók</a></li>
                         <li><a href="#/favorites"><i class="ion-star"></i>Kedvenc oldalak</a></li>
                         <li><a href="#/about"><i class="ion-information-circled"></i>Weboldal névjegye</a></li>
-                        <li><i class="ion-log-out"></i>Kijelentkezés</li>
+                        <li ng-click="toggleDropDown(); logout()"><i class="ion-log-out"></i>Kijelentkezés</li>
                     </ul>
                 </div>
             </div>         
