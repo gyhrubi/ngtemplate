@@ -481,7 +481,7 @@ body {
 }
 .cf_navigationCtrl .tree-list input[type="checkbox"]:checked ~ ul,
 .cf_navigationCtrl .tree-list input[type="checkbox"]:checked ~ ol {
-  max-height: 300px;
+  max-height: 500px;
 }
 .cf_navigationCtrl .tree-list input[type="checkbox"]:checked + label {
   color: #fff;
