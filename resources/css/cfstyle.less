@@ -10,7 +10,7 @@ body {
     text-transform: uppercase;
     margin: 10px 0 25px 0;
     font-weight: 600;
-    
+    letter-spacing: 1px;    
 }
 
 .cf-box-pagetitle {
@@ -19,8 +19,9 @@ body {
     text-transform: uppercase;
     margin: 10px 0 15px 0;
     font-weight: 600;
+    letter-spacing: 1px;
+    word-spacing: 2px;
 }
-
 
 .cf-field-label {
 
@@ -36,73 +37,164 @@ body {
 
 .cf-main-error {
     text-align: center;
+    color: #c0392b;
 }
 
 .cf-default-text {
-    
+    text-align: center;
+    font-family: @fontFamily;
+    color: @fontColorDark;
+    line-height: 145%;
+    font-size: 18px;
+}
+
+.cf-succes-text {
+    text-align: center;
+    font-family: @fontFamily;
+    color: #27ae60;
+    line-height: 145%;
+    font-size: 16px;
 }
 
 .cf-required-star {
     
 }
 
-
-.cf-checkbox-label {
-    font-size: 14px;
+.cf-primary {
     color: @fontColorDark;
     font-family: @fontFamily;
-    cursor: pointer;
-    font-weight: 200;
-    display: flex;
-    align-items: center;
+    background-color: @secColorDark;
+    border-color: @secColorDark;
+    font-size: 16px;
 }
 
-input[type="checkbox"] {
-  display: none;
+.cf-primary:hover {
+    background-color: @secColor;    
 }
 
-input[type="checkbox"] + .cf-checkbox-label:before {
-  content: "\f096";
-  font-family: "FontAwesome";
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  width: 1em;
-  display: inline-block;
-  margin-right: 5px;
-  font-size: 22px;
-  
+.cf-primary:active {
+    border-color: @secColorDark;
+    outline: none;
 }
 
-input[type="checkbox"]:checked + .cf-checkbox-label:before {
-  content: "\f14a";
-  color: @secColor;
-  -webkit-animation:tick 180ms ease-in;
-  animation:tick 180ms ease-in;
+// Custom checkbox
+.cf-checkbox {    
+    
+    display: none;
+    
+    + label {
+        font-size: 16px;
+        color: @fontColorDark;
+        font-family: @fontFamily;
+        cursor: pointer;
+        font-weight: 200;
+        display: flex;
+        align-items: center;
+    }
+    
+    + label:before {
+        content: "\f096";
+        font-family: "FontAwesome";
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        width: 1em;
+        display: inline-block;
+        margin-right: 5px;
+        font-size: 22px;
+    }  
+    
+    &.reverse + label {
+        flex-direction: row-reverse;
+    }
+    
+    &.reverse + label:before {
+        margin-left: 5px;
+        margin-right: 0;
+    }
+    
+    &:checked + label:before {
+        content: "\f14a";
+        color: @secColorDark;
+        -webkit-animation:tick 180ms ease-in;
+        animation:tick 180ms ease-in;
+    }
+    
+    &:disabled + label {
+        color: #aaa;
+    }
+    
+    &:disabled + label {
+        content: "\f0c8";
+        color: #ccc;
+    }
+    
+    @-webkit-keyframes tick {
+        0%   {-webkit-transform: scale(0); }
+        90%  {-webkit-transform: scale(1.4); }
+        100%  {-webkit-transform: scale(1); }
+    }
+
+    @keyframes tick {
+        0%   {transform: scale(0); }
+        90%  {transform: scale(1.4); }
+        100%  {transform: scale(1); }
+    }
 }
 
-input[type="checkbox"]:disabled + .cf-checkbox-label {
-  color: #aaa;
+// Loading animation
+.cf-spinner {
+    
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    text-align: center;
+
+    -webkit-animation: sk-rotate 2.0s infinite linear;
+    animation: sk-rotate 2.0s infinite linear;
+    
+    .dot1, .dot2 {
+      width: 60%;
+      height: 60%;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      background-color: @secColor;
+      border-radius: 100%;
+
+      -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+      animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+
+    .dot2 {
+      top: auto;
+      bottom: 0;
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+
+    @-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
+    @keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+    @-webkit-keyframes sk-bounce {
+      0%, 100% { -webkit-transform: scale(0.0) }
+      50% { -webkit-transform: scale(1.0) }
+    }
+
+    @keyframes sk-bounce {
+      0%, 100% { 
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+      } 50% { 
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+      }
+    }    
 }
 
-input[type="checkbox"]:disabled + .cf-checkbox-label:before {
-  content: "\f0c8";
-  color: #ccc;
-}
-
-@-webkit-keyframes tick {
-  0%   {-webkit-transform: scale(0); }
-  90%  {-webkit-transform: scale(1.4); }
-  100%  {-webkit-transform: scale(1); }
-}
-
-@keyframes tick {
-  0%   {transform: scale(0); }
-  90%  {transform: scale(1.4); }
-  100%  {transform: scale(1); }
-}
-
+    

@@ -1,0 +1,28 @@
+<div class="cfForgottenPwCtrl" ng-controller="cfForgottenPwCtrl">
+    <div class="page-row row">       
+        <div class="page-wrapper col-xs-12 col-sm-10 col-md-8 col-lg-6">
+           
+            <h1 class="cf-box-pagetitle">Elfelejtette jelszavát?</h1>
+            <p class="cf-default-text">Új jelszó beállításához kérjük adja meg a fiókjához tartozó e-mail címét a lenti mezőbe, majd nyomja meg a 'Küldés' gombot.</p>
+            
+            <div class="field-container">
+               <div class="icon-container">
+                    <i class="ion-email field-icon"></i>
+                </div>
+                <input type="email" id="userEmailInput" placeholder="E-mail cím" class="login-field form-control" ng-focus="scrollTo('userPasswordInput')">
+            </div>
+            <div class="choice-container">
+                <button class="btn cf-primary" ng-click="resetPassword()">Küldés</button>
+                <a href="#/login">Vissza a bejelentkezéshez</a>
+            </div>
+            <div class="result-container">
+                <p class="cf-succes-text" ng-show="false">Rendszerünk a megadott e-mail címre kiküldi az új jelszavát! A kapott jelszó sikeres belépés után a 'Felhasználói fiók' menüpontban megváltoztatható.</p>
+                <div class="cf-spinner" ng-show="{true}">
+                    <div class="dot1"></div>
+                    <div class="dot2"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -2,24 +2,12 @@
 @import "https://fonts.googleapis.com/css?family=Roboto:400,500";
 @import "http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css";
 /*
-@primColor: #00838f;
-@primColorDark: #005662;
-@primColorLight: #4fb3bf;
-@secColor: #00e5ff;
-@secColorLight: #6effff;
-@secColorDark: #00b2cc;
-@fontColorDark: rgba(0, 0, 0, 0.52);
-@fontColorLight: rgba(255, 255, 255, 0.54);
-@fontFamily: 'Roboto', sans-serif;
-*/
-/*
-
-@primColor: #f06292;
-@primColorDark: #ba2d65;
-@primColorLight: #ff94c2;
-@secColor: #7986cb;
-@secColorLight: #aab6fe;
-@secColorDark: #49599a;
+@primColor: #607d8b;
+@primColorDark: #34515e;
+@primColorLight: #8eacbb;
+@secColor: rgb(30,215,96);//#26c6da;
+@secColorLight: #6ff9ff;
+@secColorDark: #0095a8;
 @fontColorDark: rgba(0, 0, 0, 0.54);
 @fontColorLight: rgba(255, 255, 255, 0.52);
 @fontFamily: 'Roboto', sans-serif;
@@ -38,14 +26,14 @@
 /* --------------------------------------------- */
 .cf-header {
   height: 70px;
-  background-color: #34515e;
+  background-color: #005662;
 }
 .cf-navigation {
   width: 250px;
-  background-color: #607d8b;
+  background-color: #00838f;
 }
 .navbar-btn {
-  background-color: #17927e;
+  background-color: #00e5ff;
   width: 40px;
   height: 40px;
   border-radius: 5px;
@@ -55,7 +43,7 @@
 }
 .navbar-btn i {
   font-size: 28px;
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0, 0, 0, 0.52);
 }
 /* --------------------------------------------- */
 /* FLEX LAYOUT */
@@ -162,35 +150,67 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 .cf-pagetitle {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0, 0, 0, 0.52);
   font-size: 32px;
   text-transform: uppercase;
   margin: 10px 0 25px 0;
   font-weight: 600;
+  letter-spacing: 1px;
 }
 .cf-box-pagetitle {
-  color: rgba(0, 0, 0, 0.54);
+  color: rgba(0, 0, 0, 0.52);
   font-size: 22px;
   text-transform: uppercase;
   margin: 10px 0 15px 0;
   font-weight: 600;
+  letter-spacing: 1px;
+  word-spacing: 2px;
 }
 .cf-main-error {
   text-align: center;
+  color: #c0392b;
 }
-.cf-checkbox-label {
-  font-size: 14px;
-  color: rgba(0, 0, 0, 0.54);
+.cf-default-text {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, 0.52);
+  line-height: 145%;
+  font-size: 18px;
+}
+.cf-succes-text {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #27ae60;
+  line-height: 145%;
+  font-size: 16px;
+}
+.cf-primary {
+  color: rgba(0, 0, 0, 0.52);
+  font-family: 'Roboto', sans-serif;
+  background-color: #00b2cc;
+  border-color: #00b2cc;
+  font-size: 16px;
+}
+.cf-primary:hover {
+  background-color: #00e5ff;
+}
+.cf-primary:active {
+  border-color: #00b2cc;
+  outline: none;
+}
+.cf-checkbox {
+  display: none;
+}
+.cf-checkbox + label {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.52);
   font-family: 'Roboto', sans-serif;
   cursor: pointer;
   font-weight: 200;
   display: flex;
   align-items: center;
 }
-input[type="checkbox"] {
-  display: none;
-}
-input[type="checkbox"] + .cf-checkbox-label:before {
+.cf-checkbox + label:before {
   content: "\f096";
   font-family: "FontAwesome";
   speak: none;
@@ -205,16 +225,23 @@ input[type="checkbox"] + .cf-checkbox-label:before {
   margin-right: 5px;
   font-size: 22px;
 }
-input[type="checkbox"]:checked + .cf-checkbox-label:before {
+.cf-checkbox.reverse + label {
+  flex-direction: row-reverse;
+}
+.cf-checkbox.reverse + label:before {
+  margin-left: 5px;
+  margin-right: 0;
+}
+.cf-checkbox:checked + label:before {
   content: "\f14a";
-  color: #17927e;
+  color: #00b2cc;
   -webkit-animation: tick 180ms ease-in;
   animation: tick 180ms ease-in;
 }
-input[type="checkbox"]:disabled + .cf-checkbox-label {
+.cf-checkbox:disabled + label {
   color: #aaa;
 }
-input[type="checkbox"]:disabled + .cf-checkbox-label:before {
+.cf-checkbox:disabled + label {
   content: "\f0c8";
   color: #ccc;
 }
@@ -240,6 +267,64 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
     transform: scale(1);
   }
 }
+.cf-spinner {
+  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  -webkit-animation: sk-rotate 2s infinite linear;
+  animation: sk-rotate 2s infinite linear;
+}
+.cf-spinner .dot1,
+.cf-spinner .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: #00e5ff;
+  border-radius: 100%;
+  -webkit-animation: sk-bounce 2s infinite ease-in-out;
+  animation: sk-bounce 2s infinite ease-in-out;
+}
+.cf-spinner .dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+@-webkit-keyframes sk-rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes sk-rotate {
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes sk-bounce {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes sk-bounce {
+  0%,
+  100% {
+    transform: scale(0);
+    -webkit-transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
 .cfHeaderContentCtrl {
   height: 100%;
   display: flex;
@@ -258,7 +343,7 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
 }
 .cfHeaderContentCtrl .drop-down {
   position: relative;
-  background-color: #17927e;
+  background-color: #00e5ff;
   border-radius: 5px;
   height: 40px;
   min-width: 150px;
@@ -291,7 +376,7 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
 .cfHeaderContentCtrl .arrow-box {
   position: relative;
   margin-top: 15px;
-  background-color: #34515e;
+  background-color: #005662;
   border-radius: 5px;
 }
 .cfHeaderContentCtrl .arrow-box:before {
@@ -302,7 +387,7 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-bottom: 15px solid #17927e;
+  border-bottom: 15px solid #00e5ff;
   top: -15px;
   right: 20px;
 }
@@ -326,11 +411,11 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
 .cfHeaderContentCtrl .drop-down-menu a:link,
 .cfHeaderContentCtrl .drop-down-menu a:visited {
   display: block;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.54);
   text-decoration: none;
 }
 .cfHeaderContentCtrl .drop-down-menu li {
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.54);
   font-size: 18px;
   padding: 7px 5px;
   border-bottom: solid 0.5px rgba(154, 168, 172, 0.36);
@@ -347,7 +432,7 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
 }
 @media only screen and (max-width: 991px) {
   .cfHeaderContentCtrl .header-company-logo {
-    min-width: 120px;
+    min-width: 80px;
   }
 }
 .cf_navigationCtrl::-webkit-scrollbar {
@@ -359,19 +444,23 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.54);
   overflow-y: auto;
+  font-weight: 500;
 }
 .cf_navigationCtrl ul {
   list-style: none;
   width: 100%;
+}
+.cf_navigationCtrl label {
+  font-weight: 500;
 }
 .cf_navigationCtrl a:link,
 .cf_navigationCtrl a:visited {
   text-decoration: none;
   display: block;
   padding: 15px 0 15px 10px;
-  color: rgba(255, 255, 255, 0.52);
+  color: rgba(255, 255, 255, 0.54);
   border-bottom: solid 0.5px rgba(154, 168, 172, 0.36);
 }
 .cf_navigationCtrl .tree-list li > ul,
@@ -382,12 +471,12 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
 }
 .cf_navigationCtrl .tree-list li > ul > li > label,
 .cf_navigationCtrl .tree-list li > ul > li > a {
-  background-color: #34515e;
+  background-color: #005662;
   padding-left: 20px;
 }
 .cf_navigationCtrl .tree-list li > ul > li > ul > li > label,
 .cf_navigationCtrl .tree-list li > ul > li > ul > li > a {
-  background-color: #34515e;
+  background-color: #005662;
   padding-left: 25px;
 }
 .cf_navigationCtrl .tree-list input[type="checkbox"]:checked ~ ul,
@@ -435,11 +524,11 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
 .login_pageCtrl a:link,
 .login_pageCtrl a:visited {
   text-decoration: none;
-  color: #34515e;
+  color: #005662;
 }
 .login_pageCtrl a:hover {
   text-decoration: none;
-  color: #8eacbb;
+  color: #4fb3bf;
 }
 .login_pageCtrl .page-row {
   margin: auto;
@@ -457,7 +546,7 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
   box-shadow: 5px 5px 5px rgba(103, 103, 103, 0.24);
 }
 .login_pageCtrl .company-logo {
-  min-width: 300px;
+  min-width: 75%;
   height: 100px;
   background-image: url('../img/comforth-logo.png');
   background-size: contain;
@@ -483,7 +572,7 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
   width: 20px;
   margin: 0 5px;
   font-size: 20px;
-  color: #34515e;
+  color: #005662;
   text-align: center;
 }
 .login_pageCtrl .login-field {
@@ -495,6 +584,9 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
   justify-content: space-between;
   width: 75%;
   margin: 15px 0;
+}
+.login_pageCtrl .checkbox-container a {
+  text-align: right;
 }
 .login_pageCtrl .link-container {
   width: 75%;
@@ -511,67 +603,88 @@ input[type="checkbox"]:disabled + .cf-checkbox-label:before {
 }
 .login_pageCtrl .btn {
   width: 75%;
-  background-color: #34515e;
-  border-color: #607d8b;
 }
-.login_pageCtrl .btn:hover {
-  background-color: #607d8b;
+.cfForgottenPwCtrl {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
 }
-.login_pageCtrl .spinner {
-  margin: 0 auto;
-  width: 40px;
-  height: 40px;
-  position: relative;
+.cfForgottenPwCtrl a:link,
+.cfForgottenPwCtrl a:visited {
+  text-decoration: none;
+  color: #005662;
+}
+.cfForgottenPwCtrl a:hover {
+  text-decoration: none;
+  color: #4fb3bf;
+}
+.cfForgottenPwCtrl .page-row {
+  margin: auto;
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+}
+.cfForgottenPwCtrl .page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  box-shadow: 5px 5px 5px rgba(103, 103, 103, 0.24);
+}
+.cfForgottenPwCtrl .cf-default-text {
+  width: 75%;
+}
+.cfForgottenPwCtrl .field-container {
+  display: flex;
+  align-items: center;
+  width: 75%;
+  margin: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.cfForgottenPwCtrl .icon-container {
+  border-right: 1px solid #ccc;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.cfForgottenPwCtrl .field-icon {
+  width: 20px;
+  margin: 0 5px;
+  font-size: 20px;
+  color: #005662;
   text-align: center;
-  -webkit-animation: sk-rotate 2s infinite linear;
-  animation: sk-rotate 2s infinite linear;
 }
-.login_pageCtrl .dot1,
-.login_pageCtrl .dot2 {
-  width: 60%;
-  height: 60%;
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  background-color: #17927e;
-  border-radius: 100%;
-  -webkit-animation: sk-bounce 2s infinite ease-in-out;
-  animation: sk-bounce 2s infinite ease-in-out;
+.cfForgottenPwCtrl .login-field {
+  flex-grow: 1;
+  border: none;
 }
-.login_pageCtrl .dot2 {
-  top: auto;
-  bottom: 0;
-  -webkit-animation-delay: -1s;
-  animation-delay: -1s;
+.cfForgottenPwCtrl .choice-container {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
 }
-@-webkit-keyframes sk-rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+.cfForgottenPwCtrl .choice-container a {
+  text-align: right;
 }
-@keyframes sk-rotate {
-  100% {
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-  }
+.cfForgottenPwCtrl .result-container {
+  margin: 15px;
+  width: 75%;
+  height: 50px;
 }
-@-webkit-keyframes sk-bounce {
-  0%,
-  100% {
-    -webkit-transform: scale(0);
-  }
-  50% {
-    -webkit-transform: scale(1);
-  }
+.cfForgottenPwCtrl .btn {
+  width: 25%;
 }
-@keyframes sk-bounce {
-  0%,
-  100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-  50% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
+@media only screen and (max-width: 767px) {
+  .cfForgottenPwCtrl .cf-default-text,
+  .cfForgottenPwCtrl .field-container,
+  .cfForgottenPwCtrl .choice-container,
+  .cfForgottenPwCtrl .result-container {
+    width: 90%;
   }
 }

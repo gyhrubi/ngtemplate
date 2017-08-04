@@ -80,6 +80,28 @@ app.controller('cf_navigationCtrl', ['$scope', function($scope){
             link: true,
             route: "#/test5"            
         },
+        {
+            name: "Subpages",
+            id: "l5",
+            icon: "ion-document",
+            link: false,
+            nodes: [
+                {
+                    name: "Login",
+                    id: "l51",
+                    icon: "ion-log-in",
+                    link: true,
+                    route: "#/login"
+                },
+                {
+                    name: "Forgotten Password",
+                    id: "l52",
+                    icon: "ion-sad-outline",
+                    link: true,
+                    route: "#/forgottenpw"
+                },
+            ]
+        }
         
     ];
     

@@ -1,4 +1,4 @@
-.login_pageCtrl {
+.cfForgottenPwCtrl {
     
     width: 100%;
     height: 100%;
@@ -34,21 +34,15 @@
         box-shadow: 5px 5px 5px rgba(103, 103, 103, 0.24);
     }
     
-    .company-logo {
-        min-width: 75%;
-        height: 100px;
-        background-image: url('@{companyLogoUrl}');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        margin: 15px 0;
+    .cf-default-text {
+        width: 75%;
     }
     
     .field-container {
         display: flex;
         align-items: center;
         width: 75%;
-        margin-top: 10px;
+        margin: 15px;
         border: 1px solid #ccc;
         border-radius: 4px;        
     }
@@ -74,36 +68,31 @@
         border: none;
     }
     
-    .checkbox-container {
+    .choice-container {
+        align-items: baseline;
         display: flex;
         justify-content: space-between;
         width: 75%;
-        margin: 15px 0;
     }
-    
-    .checkbox-container a {
+    .choice-container a {
         text-align: right;
     }
     
-    .link-container {
+    .result-container {
+        margin: 15px;
         width: 75%;
-        display: flex;
-        justify-content: space-between;
-        margin: 10px 0;
-    }    
-    
-    .login-result {
         height: 50px;
-        margin-bottom: 10px;
-    }
-    
-    .cf-main-error {
-        color: #e74c3c;
     }
     
     .btn {
-        width: 75%;
-    }    
+        width: 25%;
+    }
     
+    @media only screen and (max-width: 767px) {
+        .cf-default-text,
+        .field-container, 
+        .choice-container, 
+        .result-container { width: 90%;} 
+        
+    }
 }
-

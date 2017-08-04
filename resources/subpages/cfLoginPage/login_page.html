@@ -3,8 +3,7 @@
         <div class="page-wrapper col-xs-12 col-sm-8 col-md-6 col-lg-4">
            
             <h1 class="cf-box-pagetitle">Bejelentkezés</h1>
-            <div class="company-logo"></div>
-            
+            <div class="company-logo"></div>            
             
             <div class="field-container">
                 <div class="icon-container">
@@ -20,13 +19,12 @@
             </div>
             
             <div class="checkbox-container">
-                <input type="checkbox" id="isDomainUser">
-                <label for="isDomainUser" class="cf-checkbox-label">Tartományi felhasználó?</label>
-                <a href="#/forgotpassword">Elfelejtett jelszó?</a>
+                <input type="checkbox" id="isDomainUser" class="cf-checkbox">
+                <label for="isDomainUser">Tartományi felhasználó?</label>
+                <a href="#/forgottenpw">Elfelejtett jelszó?</a>
             </div>
-            
-                        
-            <button class="btn btn-primary" ng-click="showError()">Belépés</button>
+   
+            <button class="btn cf-primary" ng-click="showError()">Belépés</button>
             
             <div class="link-container">
                 <a href="#/forgotpassword">Új felhasználó? <strong>Regisztráció</strong></a>
@@ -34,7 +32,7 @@
             
             <div class="login-result">
                 <p class="cf-main-error" ng-show="false">Error</p>       
-                <div class="spinner" ng-show="loading">
+                <div class="cf-spinner" ng-show="loading">
                     <div class="dot1"></div>
                     <div class="dot2"></div>
                 </div> 

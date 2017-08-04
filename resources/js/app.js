@@ -10,6 +10,7 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/test3', { templateUrl: 'resources/subpages/cfTestPage3/testpage3.html' })
     .when('/test4', { templateUrl: 'resources/subpages/cfTestPage4/testpage4.html' })
     .when('/test5', { templateUrl: 'resources/subpages/cfTestPage5/testpage5.html' })
+    .when('/forgottenpw', { templateUrl: 'resources/subpages/cfForgottenPw/cf_forgotten_pw.html' })
     
 }]);
 
