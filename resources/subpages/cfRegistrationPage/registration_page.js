@@ -82,17 +82,21 @@
         
         var weakRegularExp = new RegExp("^((?=.*[a-z])|(?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*]))(?=.{3,})");
             
-        var mediumRegularExp = new RegExp("^ (((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[!@#\$%\^&\*]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[!@#\$%\^&\*]))|((?=.*[0-9])(?=.*[!@#\$%\^&\*])))(?=.{5,})  ");
+        var mediumRegularExp = new RegExp("^(((?=.*[a-z])((?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[A-Z])((?=.*[a-z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[0-9])((?=.*[a-z])|(?=.*[A-Z])|(?=.*[!@#\$%\^&\*]) ))|((?=.*[!@#\$%\^&\*])((?=.*[a-z])|(?=.*[0-9])|(?=.*[A-Z]))))(?=.{5,})");
         
         /*
-        var mediumRegularExp = new RegExp("^(((?=.*[a-z])((?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[A-Z])((?=.*[a-z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[0-9])((?=.*[a-z])|(?=.*[A-Z])|(?=.*[!@#\$%\^&\*]) ))|((?=.*[!@#\$%\^&\*])((?=.*[a-z])|(?=.*[0-9])|(?=.*[A-Z]))))(?=.{5,})");*/
+       
+        var mediumRegularExp = new RegExp("^ (((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[!@#\$%\^&\*]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[!@#\$%\^&\*]))|((?=.*[0-9])(?=.*[!@#\$%\^&\*])))(?=.{5,})");
+        
+         var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{2,})"); 
+        
+        
+        var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{5,})");
+        */
 
         var OKRegularExp = new RegExp("^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])|(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*])|(?=.*[a-z])(?=.*[!@#\$%\^&\*])(?=.*[0-9])|(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]))(?=.{7,})");
         
-        var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{5,})");  
-  
-        var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{2,})"); 
-        
+                  
         var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{9,})");  
             
         var emptyRegularExp = new RegExp("^");
@@ -106,11 +110,17 @@
                 "float": "right"  
             };  
   
+        
+                        
             $scope.validationInputPwdText = function (value) {
                 if (strongRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Nagyon erős';
-                    
                     score = 4;
+                    /*$scope.progressBarStyle={"background-color":"green"}; 
+                    
+                    class="k-progress-status-wrap"
+                    */
+                         
                 } else if (OKRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Erős';
                     score = 3;
@@ -120,17 +130,21 @@
                 } else if(weakRegularExp.test(value)){  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Gyenge'; 
                     score = 1;
+
                 } else {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Nagyon gyenge'; 
                     score = 0;
                 } 
             };  
   
-                
+             
+
+            
+            
              
             $scope.status = "";
-              $scope.progress = 0;
-              $scope.labels = [
+            $scope.progress = 0;
+            $scope.labels = [
                 "",
 
               ];
@@ -138,11 +152,15 @@
               function update() {
                 $scope.progress = score;
                 $timeout(update, 200);
-              }
-              function random(a, b) {
-                return a + Math.floor(Math.random() * (b - a));
-              }
+                  
+                }; 
+              
+              
               update();
+        
+            
+        
+       
 
     };
     

@@ -37,3 +37,11 @@
 .registration_pageCtrl .progressBar {
   background-color: green;
 }
+.registration_pageCtrl .yellow-bar {
+  background-color: #cc0;
+  border-color: #cc0;
+}
+.registration_pageCtrl .red-bar {
+  background-color: #c00;
+  border-color: #cc0000;
+}
