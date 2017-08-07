@@ -10,11 +10,12 @@
 </script>
     
 <script type="text/ng-template"  id="tree_item_container.html">
-     <a href="{{data.route}}" id="{{data.id}}" ng-click="selectNavItem(data.id)" ng-class="{selected: selectedNavItem == data.id}" ><i class="{{data.icon}}"></i> {{data.name}}</a>
+     <a href="{{data.route}}" id="{{data.id}}" ng-click="selectNavItem(data.id)" ng-class="{selected: selectedNavItem == data.id}" ><i class="{{data.icon}}"></i>{{data.name}}</a>
 </script>
 
 <div class="cf_navigationCtrl" ng-controller="cf_navigationCtrl">       
        
+        <div class="min-nav-btn" ng-click="toggleMinNav()"><i class="" ng-class="minLeftNav ? 'ion-chevron-right' : 'ion-chevron-left'"></i></div>
         <ul class="tree-list">
             <li ng-repeat="data in navTree" ng-include="data.route ? 'tree_item_container.html' : 'tree_item_link.html'"></li>
         </ul>

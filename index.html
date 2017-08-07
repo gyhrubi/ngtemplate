@@ -7,13 +7,24 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         
+        <!-- Kendo Style -->
+        <link href="http://kendo.cdn.telerik.com/2017.2.621/styles/kendo.common.min.css" rel="stylesheet">
+        <link href="http://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.min.css" rel="stylesheet">
+        <link href="http://kendo.cdn.telerik.com/2017.2.621/styles/kendo.material.mobile.min.css" rel="stylesheet">
+        
         <!-- Custom styles -->
         <link href="resources/css/style.css" type="text/css" rel="stylesheet">        
 
+        <!-- JQuery -->
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+       
         <!-- Angular -->
         <script src="https://code.angularjs.org/1.4.6/angular.min.js"></script>
         <script src="https://code.angularjs.org/1.4.6/angular-route.min.js"></script>
         <script src="https://code.angularjs.org/1.4.6/angular-sanitize.min.js"></script>
+        
+        <!-- Kendo -->
+        <script src="http://kendo.cdn.telerik.com/2017.2.621/js/kendo.all.min.js"></script>
 
         <title>Angular Template</title>
  
@@ -26,7 +37,7 @@
             <div class="cf-header-content" ng-include="'/resources/subpages/cfHeaderContent/cf_header_content.html'"></div>
         </div>
         <div class="cf-content" ng-class="showMobileNavBar ? 'show-shadow' : ''">
-            <div class="cf-navigation" ng-include="'/resources/subpages/cfNavigation/cf_navigation.html'" ng-class="showMobileNavBar ? 'show' : ''" ng-show="showLeftNav && user.isAuthenticated"></div>
+            <div class="cf-navigation" ng-include="'/resources/subpages/cfNavigation/cf_navigation.html'" ng-class="{'show': showMobileNavBar, 'minify': minLeftNav}" ng-show="showLeftNav && user.isAuthenticated"></div>
             <div class="cf-viewport" ng-view ng-click="showMobileNavBar ? toggleMobileNavBar() : ''"></div>
         </div>
         <div class="cf-footer" ng-show="cfFooter">           
@@ -40,4 +51,5 @@
     <script src="resources/subpages/cfHeaderContent/cf_header_content.js"></script>
     <script src="resources/subpages/cfLoginPage/login_page.js"></script>
     <script src="resources/subpages/cfForgottenPw/cf_forgotten_pw.js"></script>
+    <script src="resources/subpages/cfAdminPage/cf_admin_page.js"></script>
 </html>

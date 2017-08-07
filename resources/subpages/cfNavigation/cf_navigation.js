@@ -1,4 +1,4 @@
-app.controller('cf_navigationCtrl', ['$scope', function($scope){  
+app.controller('cf_navigationCtrl', ['$scope','$rootScope', function($scope,$rootScope){
     
     $scope.activate = "";
     
@@ -87,6 +87,11 @@ app.controller('cf_navigationCtrl', ['$scope', function($scope){
                     icon: "ion-sad-outline",
                     route: "#/forgottenpw"
                 },
+                {
+                    name: "Admin",
+                    icon: "ion-lock-combination",
+                    route: "#/admin"
+                }
             ]
         }        
     ];    
@@ -102,6 +107,11 @@ app.controller('cf_navigationCtrl', ['$scope', function($scope){
         }        
     }
         
-    $scope.autoIdNavTree($scope.navTree,""); 
+    $scope.autoIdNavTree($scope.navTree,"");
+    
+    $scope.toggleMinNav = function(){
+        $rootScope.minLeftNav = !$rootScope.minLeftNav;
+    };
+    
     
 }]);

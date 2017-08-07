@@ -45,6 +45,7 @@
 .cf-navigation {
     width: 250px;
     background-color: @primColor;
+    transition: all 0.5s;
 }
 .navbar-btn {
     background-color: @secColor;
@@ -119,7 +120,7 @@ body {
     height: 100%;
     z-index: 401;
     transform: translateX(-250px);
-    transition: all .5s;
+    
     
     .show {
         transform: translateX(0px);
@@ -170,8 +171,13 @@ body {
     }
 }
 
+.cf-navigation.minify {
+    width: 35px;
+}
+
 @import "cfstyle.less";
 @import "../subpages/cfHeaderContent/cf_header_content.less";
 @import "../subpages/cfNavigation/cf_navigation.less";
 @import "../subpages/cfLoginPage/login_page.less";
 @import "../subpages/cfForgottenPw/cf_forgotten_pw.less";
+@import "../subpages/cfAdminPage/cf_admin_page.less";

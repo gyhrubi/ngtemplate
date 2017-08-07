@@ -20,7 +20,7 @@ cf.config.webapi.home.error = 'ERROR';
 /* DEV konfiguráció  */
 
 cf.config.webapi.dev = {};
-cf.config.webapi.dev.url = 'http://127.0.0.1:9192/api';
+cf.config.webapi.dev.url = 'http://10.0.0.109:9192/api';
 cf.config.webapi.dev.error = 'ERROR';
 
 

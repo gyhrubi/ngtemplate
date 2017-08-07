@@ -4,7 +4,7 @@ cf.showError = function (e) {
     console.log(e);
 };
 
-var app = angular.module('app', ['ngRoute','ngSanitize']);
+var app = angular.module('app', ['ngRoute','ngSanitize','kendo.directives']);
 
 app.run(function ($rootScope,$http) {
 
@@ -70,6 +70,7 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/test4', { templateUrl: 'resources/subpages/cfTestPage4/testpage4.html' })
     .when('/test5', { templateUrl: 'resources/subpages/cfTestPage5/testpage5.html' })
     .when('/forgottenpw', { templateUrl: 'resources/subpages/cfForgottenPw/cf_forgotten_pw.html' })
+    .when('/admin', { templateUrl: 'resources/subpages/cfAdminPage/cf_admin_page.html' })
 
 }]);
 
@@ -138,6 +139,7 @@ app.controller('appCtrl', ['$scope','$rootScope', function($scope, $rootScope){
 
     $scope.showMobileNavBar = false;
     $rootScope.showLeftNav = true;
+    $rootScope.minLeftNav = false;
 
     $scope.toggleMobileNavBar = function() {
         $scope.showMobileNavBar = ! $scope.showMobileNavBar;
