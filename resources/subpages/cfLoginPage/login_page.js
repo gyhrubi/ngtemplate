@@ -11,7 +11,7 @@
 
         // Látszódjon a felső és oldalsó Nav bar?
         $rootScope.showTopNav = false;
-        $rootScope.showLeftNav = false;
+        $rootScope.showLeftNav = true;
         $scope.fh = "";
         $scope.jsz = "";
         
