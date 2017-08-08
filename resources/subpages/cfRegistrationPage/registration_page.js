@@ -17,7 +17,7 @@
 
         // IDE ÍRJ:
         
-        $scope.user = {};
+        $scope.user = {};        
         
         $scope.formElements = [
             {
@@ -80,47 +80,48 @@
             }
         ];
         
-        var weakRegularExp = new RegExp("^((?=.*[a-z])|(?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*]))(?=.{3,})");
-            
-        var mediumRegularExp = new RegExp("^(((?=.*[a-z])((?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[A-Z])((?=.*[a-z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[0-9])((?=.*[a-z])|(?=.*[A-Z])|(?=.*[!@#\$%\^&\*]) ))|((?=.*[!@#\$%\^&\*])((?=.*[a-z])|(?=.*[0-9])|(?=.*[A-Z]))))(?=.{5,})");
         
-        /*
-       
-        var mediumRegularExp = new RegExp("^ (((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[!@#\$%\^&\*]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[!@#\$%\^&\*]))|((?=.*[0-9])(?=.*[!@#\$%\^&\*])))(?=.{5,})");
-        
-         var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{2,})"); 
-        
-        
-        var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{5,})");
-        */
+        // Jelszó ellenőrzés
+        (function(){
+            var weakRegularExp = new RegExp("^((?=.*[a-z])|(?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*]))(?=.{3,})");
 
-        var OKRegularExp = new RegExp("^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])|(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*])|(?=.*[a-z])(?=.*[!@#\$%\^&\*])(?=.*[0-9])|(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]))(?=.{7,})");
-        
-                  
-        var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{9,})");  
-            
-        var emptyRegularExp = new RegExp("^");
-                    
-        var score= 0;
+            var mediumRegularExp = new RegExp("^(((?=.*[a-z])((?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[A-Z])((?=.*[a-z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[0-9])((?=.*[a-z])|(?=.*[A-Z])|(?=.*[!@#\$%\^&\*]) ))|((?=.*[!@#\$%\^&\*])((?=.*[a-z])|(?=.*[0-9])|(?=.*[A-Z]))))(?=.{5,})");
 
-  
+            /*
+
+            var mediumRegularExp = new RegExp("^ (((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[!@#\$%\^&\*]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[!@#\$%\^&\*]))|((?=.*[0-9])(?=.*[!@#\$%\^&\*])))(?=.{5,})");
+
+             var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{2,})"); 
+
+
+            var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{5,})");
+            */
+
+            var OKRegularExp = new RegExp("^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])|(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*])|(?=.*[a-z])(?=.*[!@#\$%\^&\*])(?=.*[0-9])|(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]))(?=.{7,})");
+
+
+            var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{9,})");  
+
+            var emptyRegularExp = new RegExp("^");
+
+            var score= 0;
+
+
             $scope.checkpwdStrength = {  
                 "width": "150px",  
                 "height": "25px",  
                 "float": "right"  
             };  
-  
-        
-                        
+
             $scope.validationInputPwdText = function (value) {
                 if (strongRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Nagyon erős';
                     score = 4;
                     /*$scope.progressBarStyle={"background-color":"green"}; 
-                    
+
                     class="k-progress-status-wrap"
                     */
-                         
+
                 } else if (OKRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Erős';
                     score = 3;
@@ -136,34 +137,23 @@
                     score = 0;
                 } 
             };  
-  
-             
 
-            
-            
-             
             $scope.status = "";
             $scope.progress = 0;
             $scope.labels = [
                 "",
 
               ];
-              var i = -1;
-              function update() {
+            var i = -1;
+            function update() {
                 $scope.progress = score;
                 $timeout(update, 200);
-                  
-                }; 
-              
-              
-              update();
-        
-            
-        
-       
 
-    };
-    
-            
+            };
+
+            update();
+        })();        
+
+    };          
       
 })();

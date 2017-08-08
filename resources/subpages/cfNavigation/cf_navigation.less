@@ -5,13 +5,14 @@
 
 .cf_navigationCtrl {
     
+    position: relative;
     width: 100%;
     height: 100%;
     font-family: @fontFamily;
     font-size: 20px;
     text-transform: uppercase;
     color: @fontColorLight;
-    overflow-y: auto;
+    overflow-x: visible; 
     font-weight: 500;
     white-space: nowrap;
     
@@ -97,16 +98,24 @@
     }
     
     .min-nav-btn {
+        display: flex;
+        align-items: center;
         cursor: pointer;
-        width: 100%;
-        height: 40px;
-        text-align: right;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: -12px;
+        top: 50%;
+        border-radius: 12px;
+        background-color: @secColor;
+        box-shadow: 2px 2px 2px rgba(74, 74, 74, 0.13);
+        z-index: 501;
     }
     
     .min-nav-btn i {
-        color: @secColor;
-        margin-right: 10px;
-        font-size: 20px;
+        color: @fontColorDark;
+        font-size: 18px;
+        margin: auto;
     }
     
 }

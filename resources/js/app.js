@@ -131,7 +131,29 @@ app.factory('Webapi', function ($http, $templateCache, $rootScope) {
         var data = { db: 'wautlocal' };
         var promise = getJson(data, 'logout');
         return promise;
-    }
+    };
+    
+    webapiSvc.handle_users = function (u_id, sname, lname, pw, enabled, operator, email) {
+        var data = {
+            "db": "wautlocal",
+            "action": "handle_users",
+            "pars": {
+                "u_id": u_id,
+                "sname": sname,
+                "lname": lname,
+                "pw": pw,
+                "enabled": enabled,
+                "operator": operator,
+                "email": email
+            },
+            log:
+            {
+                "enabled": false,
+            },
+        };
+        var promise = getJson(data);
+        return promise;
+    };
     
     return webapiSvc;
 

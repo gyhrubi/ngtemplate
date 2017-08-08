@@ -32,6 +32,10 @@
   width: 250px;
   background-color: #00838f;
   transition: all 0.5s;
+  overflow-y: scroll;
+}
+.cf-navigation::-webkit-scrollbar {
+  display: none;
 }
 .navbar-btn {
   background-color: #00e5ff;
@@ -167,6 +171,11 @@ body {
   font-weight: 600;
   letter-spacing: 1px;
   word-spacing: 2px;
+}
+.cf-field-label {
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, 0.52);
+  font-size: 16px;
 }
 .cf-main-error {
   text-align: center;
@@ -445,13 +454,14 @@ body {
   display: none;
 }
 .cf_navigationCtrl {
+  position: relative;
   width: 100%;
   height: 100%;
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.54);
-  overflow-y: auto;
+  overflow-x: visible;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -523,15 +533,23 @@ body {
   width: 30px;
 }
 .cf_navigationCtrl .min-nav-btn {
+  display: flex;
+  align-items: center;
   cursor: pointer;
-  width: 100%;
-  height: 40px;
-  text-align: right;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  border-radius: 12px;
+  background-color: #00e5ff;
+  box-shadow: 2px 2px 2px rgba(74, 74, 74, 0.13);
+  z-index: 501;
 }
 .cf_navigationCtrl .min-nav-btn i {
-  color: #00e5ff;
-  margin-right: 10px;
-  font-size: 20px;
+  color: rgba(0, 0, 0, 0.52);
+  font-size: 18px;
+  margin: auto;
 }
 .login_pageCtrl {
   width: 100%;
@@ -743,6 +761,9 @@ body {
   padding: 5px 0;
   display: flex;
   justify-content: center;
+}
+.registration_pageCtrl .form-control {
+  width: auto;
 }
 .registration_pageCtrl .page-wrapper {
   display: flex;

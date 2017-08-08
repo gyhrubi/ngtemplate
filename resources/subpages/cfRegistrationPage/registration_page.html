@@ -9,8 +9,8 @@
                <div class="row">
                 <div ng-repeat="formElement in formElements" class="{{ formElement.divClass }}">
                     <label for="{{ formElement.inputID }}" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">{{ formElement.labelText }}:<span class="cf-required-star">*</span></label>
-                    <input type="{{ formElement.inputType }}" ng-model="user[formElement.inputID]" ng-change="validationInputPwdText(user[formElement.inputID])" id="{{ formElement.inputID }}" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
-                    <span href="#" data-toggle="tooltip" title= "{{ formElement.infoText }}" class="  info col-xs-1 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-info-sign info-sign"></span>                    
+                    <input type="{{ formElement.inputType }}" ng-model="user[formElement.inputID]" ng-change="validationInputPwdText(user[formElement.inputID])" id="{{ formElement.inputID }}" class="form-control col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                    <span data-toggle="tooltip" title= "{{ formElement.infoText }}" class="  info col-xs-1 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-info-sign info-sign"></span>                    
                     <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
                 </div>
                 </div>
@@ -28,8 +28,7 @@
                 
                 
                 
-            </form>
-
+            </form>        
           
         </div>
     </div>

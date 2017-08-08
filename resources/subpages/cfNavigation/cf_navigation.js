@@ -83,7 +83,7 @@ app.controller('cf_navigationCtrl', ['$scope','$rootScope', function($scope,$roo
                     route: "#/login"
                 },
                 {
-                    name: "Forgotten Password",
+                    name: "Reset Password",
                     icon: "ion-sad-outline",
                     route: "#/forgottenpw"
                 },
