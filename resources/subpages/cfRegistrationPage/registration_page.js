@@ -29,19 +29,18 @@
                 
             },
             {
-                divClass: "reg_password",
-                inputID: "reg_password_input",
-                labelText: "Jelszó",
-                inputType: "password",
-                infoText: "A jelszó minél hosszabb legyen illetve minél több számot, szimbólumot és nagybetűt tartalmazzon!",
+                divClass: "reg_familyname",
+                inputID: "reg_familyname_input",
+                labelText: "Vezetéknév",
+                inputType: "text",
+                infoText: "Ne használjon ékezeteket a vezetéknevében!",
             },
             {
-                divClass: "reg_password_again",
-                inputID: "reg_password_again_input",
-                labelText: "Jelszó újra",
+                divClass: "reg_surname",
+                inputID: "reg_surname_input",
+                labelText: "Keresztnév",
                 inputType: "text",
-                infoText: "Az ismételt jelszónak ugyan annak kell lennie mint a megadott jelszó!",
-
+                infoText: "Ne használjon ékezeteket a keresztnevében!",
             },
             {
                 divClass: "reg_email",
@@ -57,42 +56,30 @@
                 inputType: "email",
                 infoText: "Kérem ismételje meg az e-mail címét!",
             },
+           
             {
-                divClass: "reg_familyname",
-                inputID: "reg_familyname_input",
-                labelText: "Vezetéknév",
-                inputType: "text",
-                infoText: "Ne használjon ékezeteket a vezetéknevében!",
+                divClass: "reg_password",
+                inputID: "reg_password_input",
+                labelText: "Jelszó",
+                inputType: "password",
+                infoText: "A jelszó minél hosszabb legyen illetve minél több számot, szimbólumot és nagybetűt tartalmazzon!",
             },
             {
-                divClass: "reg_surname",
-                inputID: "reg_surname_input",
-                labelText: "Keresztnév",
+                divClass: "reg_password_again",
+                inputID: "reg_password_again_input",
+                labelText: "Jelszó újra",
                 inputType: "text",
-                infoText: "Ne használjon ékezeteket a keresztnevében!",
+                infoText: "Az ismételt jelszónak ugyan annak kell lennie mint a megadott jelszó!",
+
             },
-            {
-                divClass: "reg_phone",
-                inputID: "reg_phone_input",
-                labelText: "Telefonszám",
-                inputType: "text",
-                infoText: "A nemzetközi hivószámmal kezdje a telefonszámát!",
-            }
+            
+            
         ];
         
-        var weakRegularExp = new RegExp("^((?=.*[a-z])|(?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*]))(?=.{3,})");
+        (function(){  var weakRegularExp = new RegExp("^((?=.*[a-z])|(?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*]))(?=.{3,})");
             
         var mediumRegularExp = new RegExp("^(((?=.*[a-z])((?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[A-Z])((?=.*[a-z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*])))|((?=.*[0-9])((?=.*[a-z])|(?=.*[A-Z])|(?=.*[!@#\$%\^&\*]) ))|((?=.*[!@#\$%\^&\*])((?=.*[a-z])|(?=.*[0-9])|(?=.*[A-Z]))))(?=.{5,})");
         
-        /*
-       
-        var mediumRegularExp = new RegExp("^ (((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[!@#\$%\^&\*]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[!@#\$%\^&\*]))|((?=.*[0-9])(?=.*[!@#\$%\^&\*])))(?=.{5,})");
-        
-         var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{2,})"); 
-        
-        
-        var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{5,})");
-        */
 
         var OKRegularExp = new RegExp("^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])|(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*])|(?=.*[a-z])(?=.*[!@#\$%\^&\*])(?=.*[0-9])|(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]))(?=.{7,})");
         
@@ -110,17 +97,13 @@
                 "float": "right"  
             };  
   
-        
-                        
             $scope.validationInputPwdText = function (value) {
                 if (strongRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Nagyon erős';
                     score = 4;
                     /*$scope.progressBarStyle={"background-color":"green"}; 
-                    
                     class="k-progress-status-wrap"
                     */
-                         
                 } else if (OKRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Erős';
                     score = 3;
@@ -130,18 +113,14 @@
                 } else if(weakRegularExp.test(value)){  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Gyenge'; 
                     score = 1;
-
+                    angular.element(document.querySelector('.k-state-selected')).addClass("very_strong");
+                    
                 } else {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Nagyon gyenge'; 
                     score = 0;
                 } 
             };  
   
-             
-
-            
-            
-             
             $scope.status = "";
             $scope.progress = 0;
             $scope.labels = [
@@ -155,11 +134,14 @@
                   
                 }; 
               
-              
               update();
         
             
+        })();
+         
         
+        
+      
        
 
     };

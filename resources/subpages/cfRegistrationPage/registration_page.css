@@ -34,14 +34,9 @@
 .registration_pageCtrl #reg_password_again_input {
   -webkit-text-security: disc;
 }
-.registration_pageCtrl .progressBar {
-  background-color: green;
+.registration_pageCtrl .very_strong {
+  color: green;
 }
-.registration_pageCtrl .yellow-bar {
-  background-color: #cc0;
-  border-color: #cc0;
-}
-.registration_pageCtrl .red-bar {
-  background-color: #c00;
-  border-color: #cc0000;
+.registration_pageCtrl .k-state-selected {
+  background: green;
 }
