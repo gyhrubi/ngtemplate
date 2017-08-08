@@ -94,10 +94,14 @@ app.controller('cf_navigationCtrl', ['$scope','$rootScope', function($scope,$roo
                 },
                 {
                     name: "Registration",
-                    id: "l53",
                     icon: "ion-person-add",
                     link: true,
                     route: "#/registration_page"
+                },
+                {
+                    name: "Profile",
+                    icon: "ion-person",
+                    route: "#/profile"
                 }
             ]
         }        

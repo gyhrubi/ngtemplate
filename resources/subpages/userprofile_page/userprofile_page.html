@@ -1,0 +1,152 @@
+<div ng-controller="userprofile_pageCtrl" class="userprofile_pageCtrl">
+    <div class="page-row row">
+        <div class="page-wrapper col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="cf-pagetitle">
+                Felhasználói adatlap
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6">
+                <form class="content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div ng-repeat="formElement in formElements" class="{{ formElement.divClass }}">
+                        <label for="{{ formElement.inputID }}" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">{{ formElement.labelText }}:<span class="cf-required-star">{{ formElement.requiredStar }}</span></label>
+                        <input type="{{ formElement.inputType }}" id="{{ formElement.inputID }}" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10" ng-model="userData[formElement.inputVariable] ">
+                        <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                        <p class="cf-field-error col-lg-7 col-md-7 col-sm-7 col-xs-12">{{ formElement.errorMessage}}</p>
+                    </div>
+
+                    <div class="buttoncontainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <button type="button" class="btn btn-primary">Szerkesztés</button>
+                        <button id="myBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#change_password" data-backdrop="static">Jelszó módosítása</button>
+                    </div>
+                    <div class="buttoncontainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <button type="button" class="btn btn-primary">Módosítások mentése</button>
+                        <button type="button" class="btn btn-default">Mégse</button>
+                    </div>
+                </form>
+
+                <div class="modal" id="change_password" role="dialog">
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="bu+45tton" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Jelszó módosítása</h4>
+                            </div>
+                            <div class="modal-body clearfix">
+                                <div ng-repeat="newPasswordElement in newPasswordElements" class="{{ newPasswordElement.divClass }} clearfix">
+                                    <label for="{{ newPasswordElement.inputID }}" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">{{ newPasswordElement.labelText }}:<span class="cf-required-star">*</span></label>
+                                    <input type="password" id="{{ newPasswordElement.inputID }}" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                                    <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary col-lg-5 col-md-5 col-sm-5 col-xs-5">Módosítások mentése</button>
+                                    <button type="button" class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5">Mégse</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    
+    <!--<div class="modal" id="change_password" role="dialog">
+                    <div class="modal-dialog">
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Jelszó módosítása</h4>
+                            </div>
+                            <div class="modal-body clearfix">
+                                <div class="old_password clearfix">
+                                    <label for="old_password_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">Régi jelszó:<span class="cf-required-star">*</span></label>
+                                    <input type="password" id="old_password_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                                    <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                                </div>
+                                <div class="new_password clearfix">
+                                    <label for="new_password_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">Új jelszó:<span class="cf-required-star">*</span></label>
+                                    <input type="password" id="new_password_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                                    <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                                </div>
+                                <div class="new_password_again clearfix">
+                                    <label for="new_password_again_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">Új jelszó újra:<span class="cf-required-star">*</span></label>
+                                    <input type="password" id="new_password_again_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                                    <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                                    <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
+
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary col-lg-5 col-md-5 col-sm-5 col-xs-5">Módosítások mentése</button>
+                                <button type="button" class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-5">Mégse</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>-->
+    <!--                <form class="content col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="user_name">
+                        <label for="reg_username_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">Felhasználónév:<span class="cf-required-star">*</span></label>
+                        <input type="text" id="reg_username_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                        <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                        <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
+                    </div>
+
+                    <div class="password_name">
+                        <label for="reg_password_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">Jelszó:<span class="cf-required-star">*</span></label>
+                        <input type="password" id="reg_password_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                        <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                        <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
+                    </div>
+
+                    <div class="passwordagain_name">
+                        <label for="reg_passwordagain_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">Jelszó újra:<span class="cf-required-star">*</span></label>
+                        <input type="password" id="reg_passwordagain_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                        <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                        <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
+                    </div>
+
+                    <div class="email_name">
+                        <label for="reg_email_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">E-mail cím:<span class="cf-required-star">*</span></label>
+                        <input type="text" id="reg_email_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                        <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                        <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
+                    </div>
+
+                    <div class="emailagain_name">
+                        <label for="reg_emailagain_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">E-mail cím újra:<span class="cf-required-star">*</span></label>
+                        <input type="text" id="reg_emailagain_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                        <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                        <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
+                    </div>
+
+                    <div class="familyname_name">
+                        <label for="reg_familyname_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">Vezetéknév:<span class="cf-required-star">*</span></label>
+                        <input type="text" id="reg_familyname_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                        <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                        <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
+                    </div>
+
+                    <div class="surname_name">
+                        <label for="reg_surname_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">Keresztnév:<span class="cf-required-star">*</span></label>
+                        <input type="text" id="reg_surname_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                        <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                        <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
+                    </div>
+
+                    <div class="telephon">
+                        <label for="reg_telephone_input" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">Telefonszám:</label>
+                        <input type="text" id="reg_telephone_input" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+                        <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                        <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
+                    </div>
+                    
+                    
+                </form>
+-->
