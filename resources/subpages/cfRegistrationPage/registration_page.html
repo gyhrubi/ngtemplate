@@ -9,13 +9,16 @@
                <div class="row">
                 <div ng-repeat="formElement in formElements" class="{{ formElement.divClass }}">
                     <label for="{{ formElement.inputID }}" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">{{ formElement.labelText }}:<span class="cf-required-star">*</span></label>
-                    <input type="{{ formElement.inputType }}" ng-model="user[formElement.inputID]" ng-change="validationInputPwdText(user[formElement.inputID])" id="{{ formElement.inputID }}" class="form-control col-lg-6 col-md-6 col-sm-6 col-xs-10">
+
+                    <input type="{{ formElement.inputType }}" ng-model="user[formElement.inputID]" ng-change="validationInputPwdText(user[formElement.inputID])" id="{{ formElement.inputID }}" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
+
                     <span data-toggle="tooltip" title= "{{ formElement.infoText }}" class="  info col-xs-1 col-sm-1 col-md-1 col-lg-1 glyphicon glyphicon-info-sign info-sign"></span>                    
                     <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
                 </div>
                 </div>
-                <b> {{userPasswordstrength}}</b>
-                <div id="example" >
+                
+                <div id="password_strength_meter" ng-if="user.reg_password_input">
+                <b> {{userPasswordstrength}}</b>   
                     <div class="demo-section k-content">
                         <h4>{{status}}</h4>
                         <div  kendo-progress-bar="progressBar" k-min="0" k-max="4"  k-type=" 'percent' " ng-model="progress"  style="width: 100%;"></div>
