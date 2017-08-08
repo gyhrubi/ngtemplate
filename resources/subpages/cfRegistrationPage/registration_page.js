@@ -101,17 +101,19 @@
                 if (strongRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Nagyon erős';
                     score = 4;
-
+                    angular.element(document.querySelector('.k-state-selected')).addClass("very_strong_color");
                 } else if (OKRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Erős';
                     score = 3;
+                    angular.element(document.querySelector('.k-state-selected')).addClass("ok_color");
                 }else if (mediumRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Közepes';
                     score = 2;
+                    angular.element(document.querySelector('.k-state-selected')).addClass("medium_color");
                 } else if(weakRegularExp.test(value)){  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Gyenge'; 
                     score = 1;
-                    angular.element(document.querySelector('.k-state-selected')).addClass("very_strong");
+                    angular.element(document.querySelector('.k-state-selected')).addClass("weak_color");
                     
                 } else {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Nagyon gyenge'; 
