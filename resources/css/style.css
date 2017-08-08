@@ -486,7 +486,7 @@ body {
 }
 .cf_navigationCtrl .tree-list input[type="checkbox"]:checked ~ ul,
 .cf_navigationCtrl .tree-list input[type="checkbox"]:checked ~ ol {
-  max-height: 300px;
+  max-height: 500px;
 }
 .cf_navigationCtrl .tree-list input[type="checkbox"]:checked + label {
   color: #fff;
@@ -729,4 +729,50 @@ body {
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.14);
   box-shadow: 5px 5px 5px rgba(103, 103, 103, 0.24);
+}
+.registration_pageCtrl {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  overflow-y: auto;
+}
+.registration_pageCtrl .page-row {
+  margin: auto;
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+}
+.registration_pageCtrl .page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border: solid 0.5px rgba(59, 59, 59, 0.21);
+  box-shadow: 5px 5px 5px rgba(52, 52, 52, 0.31);
+}
+.registration_pageCtrl .cf-pagetitle {
+  font-size: 30px;
+}
+.registration_pageCtrl .password-verdict {
+  color: #000;
+}
+.registration_pageCtrl .buttons {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.registration_pageCtrl #reg_password_again_input {
+  -webkit-text-security: disc;
+}
+.registration_pageCtrl .progressBar {
+  background-color: green;
+}
+.registration_pageCtrl .yellow-bar {
+  background-color: #cc0;
+  border-color: #cc0;
+}
+.registration_pageCtrl .red-bar {
+  background-color: #c00;
+  border-color: #cc0000;
 }

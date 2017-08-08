@@ -70,6 +70,7 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/test4', { templateUrl: 'resources/subpages/cfTestPage4/testpage4.html' })
     .when('/test5', { templateUrl: 'resources/subpages/cfTestPage5/testpage5.html' })
     .when('/forgottenpw', { templateUrl: 'resources/subpages/cfForgottenPw/cf_forgotten_pw.html' })
+    .when('/registration_page', { templateUrl: 'resources/subpages/cfRegistrationPage/registration_page.html'})
     .when('/admin', { templateUrl: 'resources/subpages/cfAdminPage/cf_admin_page.html' })
 
 }]);
@@ -78,6 +79,7 @@ app.config(['$routeProvider', function($routeProvider){
 app.config(['$httpProvider', function ($httpProvider) {
     $httpProvider.defaults.headers.post['Accept'] = 'application/json';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/json';
+
 }]);
 
 /** Elkapja azt a hibát, ha nem elérhető a Web API szerver */
