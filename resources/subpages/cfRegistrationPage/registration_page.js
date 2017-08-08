@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('app')
-        .controller('registration_pageCtrl', ['$scope', '$http', '$rootScope', '$sce','$timeout' , registration_pageCtrl]);
+        .controller('registration_pageCtrl', ['$scope', '$http', '$rootScope', '$sce','$timeout' ,'Webapi', registration_pageCtrl]);
 
-    function registration_pageCtrl($scope, $http, $rootScope, $sce, $timeout) {
+    function registration_pageCtrl($scope, $http, $rootScope, $sce, $timeout,Webapi) {
         var vm = this;
 
         $rootScope.pageTitle = 'Regisztációs képernyő';
@@ -136,6 +136,29 @@
             update();        
             
         })();
+        
+        $scope.registerUser = function() {
+            var promise = Webapi.handle_users(35, "etetenyi", "Eszter Tétényi", "kiscica", 1, "cf", "etetenyi@comforth.hu");
+
+
+            promise.success(function (data) {
+                if (Webapi.isError(data)) {
+                    if (console) console.log(data);
+                } else {
+                    $scope.handleUsers.alarmShow = false;
+                    $scope.handleUsers.saveSuccess = true;
+                    $scope.handleUsers.userModifyShow = false;
+                };
+            });
+            promise.error(function (reason) {
+                if (console) console.log(reason);
+                $scope.handleUsers.alarmShow = true;
+                $scope.handleUsers.saveSuccess = false;
+            });
+        };
+        
+        $scope.registerUser();
+        
         
         
     };

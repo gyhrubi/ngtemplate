@@ -72,6 +72,7 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/forgottenpw', { templateUrl: 'resources/subpages/cfForgottenPw/cf_forgotten_pw.html' })
     .when('/registration_page', { templateUrl: 'resources/subpages/cfRegistrationPage/registration_page.html'})
     .when('/admin', { templateUrl: 'resources/subpages/cfAdminPage/cf_admin_page.html' })
+    .when('/profile', { templateUrl: 'resources/subpages/userprofile_page/userprofile_page.html' })
 
 }]);
 
@@ -155,7 +156,61 @@ app.factory('Webapi', function ($http, $templateCache, $rootScope) {
         return promise;
     };
     
+    /**
+     * A WAUT adatbázis felhasználóit adja vissza
+     * @param {number} u_id - felhasználó azonosító
+     * @param {string} sname - felhasználó név
+     * @param {string} enabled - aktiv/deaktiv felhasználók
+     * @returns {promise} promise
+     */
+    webapiSvc.list_users = function (u_id, sname, enabled) {
+        var data = {
+            "db": "wautlocal",
+            "action": "list_users",
+            "pars": {
+                "u_id": u_id,
+                "sname": sname,
+                "enabled": enabled
+            },
+            log:
+            {
+                "enabled": false,
+            },
+        };
+        var promise = getJson(data);
+        return promise;
+    };
+    
+    webapiSvc.isError = function (data, fnShowError) {
+            var retVal = false,
+                msg = '',
+                details = '';
+            if (typeof (data) === 'string' && data.substr(0, config.error.length) === config.error) {
+                msg = data.substr(config.error.length);
+                retVal = true;
+            } else if (!!data && data.hasOwnProperty('Message')) {
+                msg = data.Message;
+                retVal = true;
+            }
+            if (!!data && data.hasOwnProperty('ExceptionMessage')) {
+                if (!msg) {
+                    msg = data.ExceptionMessage;
+                } else {
+                    details = data.ExceptionMessage;
+                }
+                retVal = true;
+            }
+
+            if (retVal) {
+                if (!!fnShowError && typeof (fnShowError) === 'function') fnShowError(msg, details);
+                if (console) console.log(msg, details);
+            }
+            return retVal;
+    };
+    
     return webapiSvc;
+    
+    
 
 });
 
