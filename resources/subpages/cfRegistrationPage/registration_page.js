@@ -138,7 +138,7 @@
         })();
         
         $scope.registerUser = function() {
-            var promise = Webapi.handle_users(35, "etetenyi", "Eszter Tétényi", "kiscica", 1, "cf", "etetenyi@comforth.hu");
+            var promise = Webapi.handle_users(null, "etetenyi", "Eszter Tétényi", "kiscica", 1, "cf", "etetenyi@comforth.hu");
 
 
             promise.success(function (data) {
