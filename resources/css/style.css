@@ -32,7 +32,7 @@
   width: 250px;
   background-color: #00838f;
   transition: all 0.5s;
-  overflow-y: scroll;
+  overflow-x: visible;
 }
 .cf-navigation::-webkit-scrollbar {
   display: none;
@@ -461,7 +461,7 @@ body {
   font-size: 20px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.54);
-  overflow-x: visible;
+  overflow-y: auto;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -773,6 +773,12 @@ body {
   border: solid 0.5px rgba(59, 59, 59, 0.21);
   box-shadow: 5px 5px 5px rgba(52, 52, 52, 0.31);
 }
+.registration_pageCtrl .content {
+  width: 75%;
+}
+.registration_pageCtrl .content label {
+  height: 34px;
+}
 .registration_pageCtrl .cf-pagetitle {
   font-size: 30px;
 }
@@ -786,14 +792,9 @@ body {
 .registration_pageCtrl #reg_password_again_input {
   -webkit-text-security: disc;
 }
-.registration_pageCtrl .progressBar {
-  background-color: green;
+.registration_pageCtrl .very_strong {
+  color: green;
 }
-.registration_pageCtrl .yellow-bar {
-  background-color: #cc0;
-  border-color: #cc0;
-}
-.registration_pageCtrl .red-bar {
-  background-color: #c00;
-  border-color: #cc0000;
+.registration_pageCtrl .k-state-selected {
+  background: green;
 }
