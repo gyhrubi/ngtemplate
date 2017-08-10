@@ -5,6 +5,16 @@
   display: flex;
   align-items: center;
   overflow-y: auto;
+  background-color: #f8f8f8;
+}
+.cfForgottenPwCtrl a:link,
+.cfForgottenPwCtrl a:visited {
+  text-decoration: none;
+  color: #005662;
+}
+.cfForgottenPwCtrl a:hover {
+  text-decoration: none;
+  color: #4fb3bf;
 }
 .cfForgottenPwCtrl .page-row {
   margin: auto;
@@ -20,4 +30,57 @@
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.14);
   box-shadow: 5px 5px 5px rgba(103, 103, 103, 0.24);
+}
+.cfForgottenPwCtrl .cf-default-text {
+  width: 75%;
+}
+.cfForgottenPwCtrl .field-container {
+  display: flex;
+  align-items: center;
+  width: 75%;
+  margin: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.cfForgottenPwCtrl .icon-container {
+  border-right: 1px solid #ccc;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.cfForgottenPwCtrl .field-icon {
+  width: 20px;
+  margin: 0 5px;
+  font-size: 20px;
+  color: #005662;
+  text-align: center;
+}
+.cfForgottenPwCtrl .login-field {
+  flex-grow: 1;
+  border: none;
+}
+.cfForgottenPwCtrl .choice-container {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+}
+.cfForgottenPwCtrl .choice-container a {
+  text-align: right;
+}
+.cfForgottenPwCtrl .result-container {
+  margin: 15px;
+  width: 75%;
+  height: 50px;
+}
+.cfForgottenPwCtrl .btn {
+  width: 25%;
+}
+@media only screen and (max-width: 767px) {
+  .cfForgottenPwCtrl .cf-default-text,
+  .cfForgottenPwCtrl .field-container,
+  .cfForgottenPwCtrl .choice-container,
+  .cfForgottenPwCtrl .result-container {
+    width: 90%;
+  }
 }
