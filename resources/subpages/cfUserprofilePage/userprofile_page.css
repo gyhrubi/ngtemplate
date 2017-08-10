@@ -26,13 +26,21 @@
     margin: 0;
     padding: 0;
   }
-  .userprofile_pageCtrl .col-xs-12 {
-    padding-left: 5px;
-    padding-right: 5px;
+  .userprofile_pageCtrl .form,
+  .userprofile_pageCtrl .form_container {
+    padding-left: 0;
+    padding-right: 0;
   }
+}
+.userprofile_pageCtrl .form-container,
+.userprofile_pageCtrl .form {
+  padding-left: 0;
 }
 .userprofile_pageCtrl .cf-field-error {
   text-align: center;
+}
+.userprofile_pageCtrl .isDisabled {
+  background-color: lightgrey;
 }
 .userprofile_pageCtrl .buttoncontainer {
   display: flex;

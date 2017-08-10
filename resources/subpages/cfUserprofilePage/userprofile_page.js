@@ -34,7 +34,9 @@
                 requiredStar: "*",
                 inputType: "text",
                 inputVariable: "username",
-                errorMessage: ""
+                errorMessage: "",
+                isDisabled: "disabled",
+                readonly: "readonly"
             },
             {
                 divClass: "reg_email",
@@ -107,7 +109,9 @@
                     if (console) console.log(data);
                     //e.error(data);
                 } else {
+                    $scope.userData.username = data[0].sname;
                     $scope.userData.familyname = data[0].lname;
+                    $scope.userData.email = data[0].email;
                     //if (console) console.log($scope.usersAdminGrid.dataSet);
                     //e.success(data);
                 }               
@@ -116,5 +120,28 @@
         };
         
         $scope.getUserData();
+        
+        $scope.isDisabled = true;
+        $scope.modifying = false;
+        
+        /*
+        $scope.modifyUserData = function () {
+            $scope.isDisabled = false;        
+            $scope.modifying = true;        
+        }*/
+        
+        $scope.toggleButtonsAndDisabled = function() {
+            if ($scope.isDisabled === true) {
+                $scope.isDisabled = false;
+                $scope.modifying = true;
+                var input = $window.document.getElementById("reg_email_input");
+                input.focus();
+            } else {
+                $scope.isDisabled = true;
+                $scope.modifying = false;
+            }
+        }
+        
+        
     }
 })();

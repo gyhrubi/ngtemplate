@@ -72,7 +72,7 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/forgottenpw', { templateUrl: 'resources/subpages/cfForgottenPw/cf_forgotten_pw.html' })
     .when('/registration_page', { templateUrl: 'resources/subpages/cfRegistrationPage/registration_page.html'})
     .when('/admin', { templateUrl: 'resources/subpages/cfAdminPage/cf_admin_page.html' })
-    .when('/profile', { templateUrl: 'resources/subpages/userprofile_page/userprofile_page.html' })
+    .when('/profile', { templateUrl: 'resources/subpages/cfUserprofilePage/userprofile_page.html' })
 
 }]);
 
