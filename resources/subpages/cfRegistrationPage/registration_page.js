@@ -158,7 +158,8 @@
                 }
                 
             }
-            
+            $scope.RegistrationSucces = '';
+            $scope.RegistrationError = '';
             $timeout(function(){$scope.showLoading = false},1000);
         };
         
