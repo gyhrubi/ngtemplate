@@ -40,9 +40,17 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.registration_pageCtrl #reg_password_again_input {
-  -webkit-text-security: disc;
-}
-.registration_pageCtrl .very_strong {
+.registration_pageCtrl .RegistrationSuccesText {
   color: green;
+  margin-bottom: 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+.registration_pageCtrl .RegistrationErrorText {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
 }

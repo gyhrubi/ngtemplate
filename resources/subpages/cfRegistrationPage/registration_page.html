@@ -13,18 +13,26 @@
                     <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
                 </div>
                 </div>
-                <div class="msg-block" ng-show="myForm.$error"><span class="msg-error" ng-show="myForm.user[reg_password_again_input]$error.pwmatch">A két megadott jelszó nem egyezik!</span>
-                </div>
+                <div class="msg-block">{{valueWarningMessages}}</div>
+                
                 <div id="password_strength_meter" ng-if="user.reg_password_input">
                 <b> {{userPasswordstrength}}</b>   
                     <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-valuenow="{{valueProgressBar}}" aria-valuemin="0" aria-valuemax="4" style="width:{{valueProgressBarWidth}}%; background:{{valueProgressBarBackgroundColor}}">{{valueProgressBarWidth}}%</div>
                     </div>
-                </div>   
+                </div>
+                <div class="cf-spinner" ng-show="showLoading">
+                        <div class="dot1"></div>
+                        <div class="dot2"></div>
+                </div>
                 <div class="buttons">
-                    <button class="btn btn-info">Regisztrálok</button>
+                    <button class="btn btn-info" ng-click="registration()">Regisztrálok</button>
                     <button class="btn btn-default col-lg-offset-6 col-md-offset-6 col-sm-offset-6 col-xs-offset-2">Mégse</button>
                 </div>
+                <b class="RegistrationSuccesText">{{RegistrationSucces}}</b> 
+                <b class="RegistrationErrorText">{{RegistrationError}}</b> 
+                
+            
             </form>        
         </div>
     </div>

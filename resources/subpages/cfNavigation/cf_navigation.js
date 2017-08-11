@@ -9,70 +9,7 @@ app.controller('cf_navigationCtrl', ['$scope','$rootScope', function($scope,$roo
     }  
     
     $scope.navTree = [
-        {
-            name: "Users",
-            icon: "ion-person",
-            nodes: [
-                {
-                    name: "New user",
-                    icon: "ion-person-add",
-                    route: "#/login"
-                },
-                {
-                    name: "User Groups",
-                    icon: "ion-person-stalker",
-                    route: "#/test1",
-                }
-            ]
-        },
-        {
-            name: "Settings",
-            icon: "ion-settings",
-            nodes: [
-                {
-                    name: "System",
-                    icon: "ion-gear-a",
-                    nodes: [
-                        {
-                            name: "Connections",
-                            nodes: [
-                                {
-                                    name: "Test1",
-                                    route: "valami"
-                                },
-                                {
-                                    name: "Test2",
-                                    route: "valami"
-                                },
-                                {
-                                    name: "Test3",
-                                    route: "valami"
-                                }
-                            ]                            
-                        },
-                        {
-                            name: "Display",
-                            route: "#/test3"                            
-                        }
-                    ]
-                },
-                {
-                    name: "Messages",
-                    icon: "ion-android-mail",
-                    route: "#/test4"
-                }
-            ]
-        },
-        {
-            name: "Events",
-            icon: "ion-android-calendar",
-            route: "#/test1"                
-        },
-        {
-            name: "Reports",
-            icon: "ion-stats-bars",
-            route: "#/test5"            
-        },
+        
         {
             name: "Subpages",
             icon: "ion-document",
