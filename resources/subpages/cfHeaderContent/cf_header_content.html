@@ -7,13 +7,12 @@
         
         <div class="drop-down-content" ng-class="showDropDown ? 'show' : ''">
             <div class="arrow-box">
-                <div class="loginDirective" ng-if="!user.isAuthenticated && enableLoginPage ? true : false" ng-include="'/resources/subpages/cfLoginPage/login_page.html'"></div>
+                <div class="loginDirective" ng-if="enableLoginPage ? true : false" ng-include="'/resources/subpages/cfLoginPage/login_page.html'"></div>
                 <div class="drop-down-menu">
                     <ul>
                         <li><a href="#/myprofile"><i class="ion-person"></i>Saját fiók</a></li>
                         <li><a href="#/favorites"><i class="ion-star"></i>Kedvenc oldalak</a></li>
                         <li><a href="#/about"><i class="ion-information-circled"></i>Weboldal névjegye</a></li>
-                        <li ng-click="toggleDropDown(); logout()"><i class="ion-log-out"></i>Kijelentkezés</li>
                     </ul>
                 </div>
             </div>         

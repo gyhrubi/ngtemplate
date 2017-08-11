@@ -136,6 +136,7 @@
         })();
         
         $scope.registerUser = function() {
+
             var promise = Webapi.handle_users(null, $scope.user.reg_username_input, $scope.user.reg_surname_input +" " + $scope.user.reg_familyname_input, $scope.user.reg_password_input, 1, "", $scope.user.reg_email_input);
 
 

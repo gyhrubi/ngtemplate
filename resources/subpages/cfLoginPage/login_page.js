@@ -14,6 +14,7 @@
         $rootScope.showLeftNav = true;
         $scope.fh = "";
         $scope.jsz = "";
+        $scope.$timeout = $timeout;
         
         // Scrolls the viewport to the focused element with 500ms delay. It's useful on mobile devices.
         $scope.scrollTo = function(elem){
@@ -59,7 +60,7 @@
             
             $scope.errorMessage = "Sikertelen bejelentkezés.";          
             
-            var promise = Webapi.login(($scope.isZem ? 'zem' : undefined), $scope.fh, $scope.jsz);
+            var promise = Webapi.login(($scope.isDomain ? $rootScope.domainName : undefined), $scope.fh, $scope.jsz);
             $scope.jsz = '';
             promise.success(function (response) {
                 $rootScope.initUser();
@@ -93,26 +94,26 @@
         }
         
         // Logout function:
-        /*$scope.logout = function (fnCallback) {
-            
-            $scope.logoutError = false;
-            var promise = Webapi.logout();
-            promise.success(function (response) {
-                $rootScope.initUser();
-                $rootScope.setUserSession();
-            })
-            promise.error(function (err, status) {
-                $rootScope.initUser();
-                $scope.logoutError = true;
-                $rootScope.setUserSession();
-            });
+        $scope.logout = function (fnCallback) {
 
-            //$route.reload();
+                $scope.logoutError = false;
+                var promise = Webapi.logout();
+                promise.success(function (response) {
+                    $rootScope.initUser();
+                    $rootScope.setUserSession();
+                })
+                promise.error(function (err, status) {
+                    $rootScope.initUser();
+                    $scope.logoutError = true;
+                    $rootScope.setUserSession();
+                });
 
-            if (fnCallback) {
-                fnCallback();
-            }
-        }*/
+                //$route.reload();
+
+                if (fnCallback) {
+                    fnCallback();
+                }
+        }
         
     }
 })();

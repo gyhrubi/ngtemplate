@@ -1,3 +1,4 @@
+@import "../../css/g_variables.less";
 .login_pageCtrl {
     
     width: 100%;
@@ -28,17 +29,24 @@
 
     .page-wrapper {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: center;
         background-color: #ffffff;
         border: 1px solid rgba(0, 0, 0, 0.14);
         box-shadow: 5px 5px 5px rgba(103, 103, 103, 0.24);
     }
     
+    .user-out-box,
+    .user-in-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
     .company-logo {
         min-width: 75%;
         height: 100px;
-        background-image: url('@{companyLogoUrl}');
+        background-image: url('../../@{companyLogoUrl}');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -106,5 +114,15 @@
         width: 75%;
     }    
     
+    .user-name-label {
+        font-family: @fontFamily;
+        color: @primColorDark;
+        font-size: 24px;
+    }
+    
+    .logout-btn {
+        margin: 20px 0;
+        width: 50%;
+    }
 }
 
