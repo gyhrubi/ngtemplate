@@ -6,7 +6,7 @@
 
     function registration_pageCtrl($scope, $http, $rootScope, $sce, $timeout,Webapi) {
         var vm = this;
-
+        
         $rootScope.pageTitle = 'Regisztációs képernyő';
 
         // Látszódjon a felső és oldalsó Nav bar?
@@ -86,10 +86,11 @@
 
 
             var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{9,})");  
-
-            var emptyRegularExp = new RegExp("^");
-
+            
             var score= 0;
+            var valueProgressBarBackgroundColor
+            var valueProgressBar = 0;
+            var valueProgressBarWidth = 0;
 
             $scope.checkpwdStrength = {  
                 "width": "150px",  
@@ -101,46 +102,41 @@
                 if (strongRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Nagyon erős';
                     score = 4;
-                    angular.element(document.querySelector('.k-state-selected')).addClass("very_strong_color");
+                    valueProgressBarBackgroundColor = "green";
                 } else if (OKRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Erős';
                     score = 3;
-                    angular.element(document.querySelector('.k-state-selected')).addClass("ok_color");
+                    valueProgressBarBackgroundColor = "limegreen";
                 }else if (mediumRegularExp.test(value)) {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Közepes';
                     score = 2;
-                    angular.element(document.querySelector('.k-state-selected')).addClass("medium_color");
+                    valueProgressBarBackgroundColor = "orange";
                 } else if(weakRegularExp.test(value)){  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Gyenge'; 
                     score = 1;
-                    angular.element(document.querySelector('.k-state-selected')).addClass("weak_color");
-                    
+                    valueProgressBarBackgroundColor= "red";
                 } else {  
                     $scope.userPasswordstrength = 'Jelszavad erősége: Nagyon gyenge'; 
                     score = 0;
                 } 
             };  
-
-            $scope.status = "";
-            $scope.progress = 0;
-            $scope.labels = [
-                "",
-
-              ];
+            $scope.valueProgressBar = 0;
+            $scope.valueProgressBarWidth = 0;
+            
             var i = -1;
             function update() {
+                $scope.valueProgressBarBackgroundColor = valueProgressBarBackgroundColor;
+                $scope.valueProgressBar = score;
+                $scope.valueProgressBarWidth = score*25;
                 $scope.progress = score;
+                $scope.valueProgressBarBackgroundColor
                 $timeout(update, 200);
-
-                  
             }; 
-              
             update();        
-
         })();
         
         $scope.registerUser = function() {
-            var promise = Webapi.handle_users(35, "etetenyi", "Eszter Tétényi", "kiscica", 1, "cf", "etetenyi@comforth.hu");
+            var promise = Webapi.handle_users(null, $scope.user.reg_username_input, $scope.user.reg_surname_input +" " + $scope.user.reg_familyname_input, $scope.user.reg_password_input, 1, "", $scope.user.reg_email_input);
 
 
             promise.success(function (data) {
@@ -161,8 +157,39 @@
         
         $scope.registerUser();
         
-        
+        (function(){    
+            return {
+        require: 'ngModel',
+        link: function (scope, elem, attrs, ctrl) {
+            var firstPassword = $scope.user.reg_password_input + attrs.pwCheck;
+            elem.add(firstPassword).on('keyup', function () {
+                scope.$apply(function () {
+                    console.info(elem.val() === $(firstPassword).val());
+                    ctrl.$setValidity('pwmatch', elem.val() === $(firstPassword).val());
+                });
+            });
+        }
+    }}())
         
     };
-      
+    
+    
+    /*
+    angular.module('app.directives', [])
+    .directive('pwCheck', [function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, elem, attrs, ctrl) {
+            var firstPassword = '#' + attrs.pwCheck;
+            elem.add(firstPassword).on('keyup', function () {
+                scope.$apply(function () {
+                    // console.info(elem.val() === $(firstPassword).val());
+                    ctrl.$setValidity('pwmatch', elem.val() === $(firstPassword).val());
+                });
+            });
+        }
+    }
+}]);
+*/
+  
 })();
