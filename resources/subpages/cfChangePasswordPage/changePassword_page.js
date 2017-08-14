@@ -2,12 +2,12 @@
     'use strict';
 
     angular.module('app')
-        .controller('registration_pageCtrl', ['$scope', '$http', '$rootScope', '$sce','$timeout' ,'Webapi', registration_pageCtrl]);
-
-    function registration_pageCtrl($scope, $http, $rootScope, $sce, $timeout,Webapi) {
+        .controller('changePassword_pageCtrl', ['$scope', '$http', '$rootScope', '$sce','$timeout' ,'Webapi', changePassword_pageCtrl]);
+    
+        function changePassword_pageCtrl($scope, $http, $rootScope, $sce, $timeout,Webapi) {
         var vm = this;
-        
-        $rootScope.pageTitle = 'Regisztációs képernyő';
+            
+        $rootScope.pageTitle = 'Jelszómódosítás képernyő';
 
         // Látszódjon a felső és oldalsó Nav bar?
         $rootScope.showTopNav = true;
@@ -16,47 +16,10 @@
         //$rootScope.showLeftNav = false;
 
         // IDE ÍRJ:
-        
+            
         $scope.user = {};        
         
         $scope.formElements = [
-            {
-                divClass: "reg_username",
-                inputID: "reg_username_input",
-                labelText: "Felhasználónév",
-                inputType: "text",
-                infoText: "A felhasználónév legalább 6 karekter hosszú legyen!",
-                
-            },
-            {
-                divClass: "reg_familyname",
-                inputID: "reg_familyname_input",
-                labelText: "Vezetéknév",
-                inputType: "text",
-                infoText: "Ne használjon ékezeteket a vezetéknevében!",
-            },
-            {
-                divClass: "reg_surname",
-                inputID: "reg_surname_input",
-                labelText: "Keresztnév",
-                inputType: "text",
-                infoText: "Ne használjon ékezeteket a keresztnevében!",
-            },
-            {
-                divClass: "reg_email",
-                inputID: "reg_email_input",
-                labelText: "E-mail cím",
-                inputType: "email",
-                infoText: "Addjon meg egy érvényes e-mail címet!",
-            },
-            {
-                divClass: "reg_email_again",
-                inputID: "reg_email_again_input",
-                labelText: "E-mail cím újra",
-                inputType: "email",
-                infoText: "Kérem ismételje meg az e-mail címét!",
-            },
-           
             {
                 divClass: "reg_password",
                 inputID: "reg_password_input",
@@ -70,12 +33,12 @@
                 labelText: "Jelszó újra",
                 inputType: "password",
                 infoText: "Az ismételt jelszónak ugyan annak kell lennie mint a megadott jelszó!",
-
             },
             
             
-        ];
-
+        ];    
+            
+            
         // Jelszó erőség ellenőrzés
         (function(){
             var weakRegularExp = new RegExp("^((?=.*[a-z])|(?=.*[A-Z])|(?=.*[0-9])|(?=.*[!@#\$%\^&\*]))(?=.{3,})");
@@ -135,10 +98,24 @@
             update();        
         })();
         
-        var errorMatchnumb;
         
-        // Tényleges regisztráció
-        $scope.registration = function() {
+        // Jelszavak egyezésének ellenőrzése
+        $scope.checkSameInputFieldsMatch = function() {
+            
+            $scope.valueWarningMessages="";
+            
+            // Egyeznek a jelszavak 
+            if ($scope.user.reg_password_input === $scope.user.reg_password_again_input){
+               return true; 
+                }
+            // Nem egyeznek a jelszavak    
+            else if($scope.user.reg_password_input != $scope.user.reg_password_again_input){
+                return false;
+                }
+        };
+        
+        // Tényleges jelszómódosítás
+        $scope.changePassword = function() {
             
             $scope.showLoading = true;
             
@@ -146,25 +123,15 @@
                 $timeout($scope.registerUser,1000);
             } 
             else {
-                
-                if(errorMatchnumb === 1){
-                 $scope.valueWarningMessages="A megadott két email cím nem egyezik egymással!" ;  
-                }
-                else if(errorMatchnumb === 2){
-                    $scope.valueWarningMessages="A két megadott jelszó nem egyezik!" ;  
-                }
-                else if(errorMatchnumb === 3){
-                    $scope.valueWarningMessages="A két megadott jelszó nem egyezik illetve a két megadott e-mail cím sem!";   
-                }
-                
+                $scope.valueWarningMessages="A két megadott jelszó nem egyezik!" ;  
             }
-            $scope.RegistrationSucces = '';
-            $scope.RegistrationError = '';
+            $scope.changePasswordSucces = '';
+            $scope.changePasswordError = '';
             $timeout(function(){$scope.showLoading = false},1000);
         };
         
-        // WebApi, SQL kommunikáció
-        $scope.registerUser = function() {           
+        // WebApi, SQL kommunikáció de még hiányzik a tárolt eljárás!!
+        $scope.changePasswordSend = function() {           
             
             var promise = Webapi.handle_users(null, $scope.user.reg_username_input, $scope.user.reg_surname_input +" " + $scope.user.reg_familyname_input, $scope.user.reg_password_input, 1, "", $scope.user.reg_email_input);
 
@@ -173,51 +140,19 @@
                 if (Webapi.isError(data)) {
                     if (console) console.log(data);
                 } else {
-                    $scope.RegistrationSucces = 'Sikeres regisztráció!';
+                    $scope.RegistrationSucces = 'Ön sikeresen módosította a jelszavát!';
                 };
             });
             promise.error(function (reason) {
                 if (console) console.log(reason);
-                $scope.RegistrationError = 'Sikertelen regisztráció!';
+                $scope.RegistrationError = 'Sikertelen jelszó módosítás!';
             });
             
             $scope.showLoading = false;
-        };        
-        
-        // E-mailek és jelszavak egyezésének ellenőrzése
-        $scope.checkSameInputFieldsMatch = function() {
+        }; 
+
             
-            errorMatchnumb=0;
-            $scope.valueWarningMessages="";
             
-            // Egyeznek a jelszavak és az email-ek is
-            if (($scope.user.reg_password_input === $scope.user.reg_password_again_input) && ($scope.user.reg_email_input === $scope.user.reg_email_again_input)){
-                errorMatchnumb= 0;
-                
-               return true; 
-                }
-            
-            // Egyeznek a jelszavak de az email-ek nem   
-            else if(($scope.user.reg_password_input === $scope.user.reg_password_again_input) &&  ($scope.user.reg_email_input != $scope.user.reg_email_again_input)){
-                errorMatchnumb= 1;
-                return false;
-                }
-            
-            // Nem egyeznek a jelszavak de az email-ek igen    
-            else if(($scope.user.reg_password_input != $scope.user.reg_password_again_input) && ($scope.user.reg_email_input === $scope.user.reg_email_again_input)){
-                errorMatchnumb= 2;
-                return false;
-                }
-            
-            // Nem egyeznek a jelszavak és az email-ek sem
-            else if(($scope.user.reg_password_input != $scope.user.reg_password_again_input) && ($scope.user.reg_email_input != $scope.user.reg_email_again_input)){
-                errorMatchnumb= 3;
-                return false;
-            }
-            
-        };
-        
-        
-    };
-  
-})();
+         }; 
+    
+    })();
