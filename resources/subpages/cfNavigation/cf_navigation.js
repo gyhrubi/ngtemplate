@@ -44,6 +44,11 @@ app.controller('cf_navigationCtrl', ['$scope','$rootScope', function($scope,$roo
                     name: "Change Password",
                     icon: "ion-settings",
                     route: "#/change_password_page"
+                },
+                {
+                    name: "Information",
+                    icon: "ion-information",
+                    route: "#/info"
                 }
             ]
         }        

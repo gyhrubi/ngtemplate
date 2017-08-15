@@ -76,6 +76,7 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/registration_page', { templateUrl: 'resources/subpages/cfRegistrationPage/registration_page.html'})
     .when('/admin', { templateUrl: 'resources/subpages/cfAdminPage/cf_admin_page.html' })
     .when('/profile', { templateUrl: 'resources/subpages/userprofile_page/userprofile_page.html' })
+    .when('/info', { templateUrl: 'resources/subpages/cfInfoPage/info_page.html' })
     .when('/change_password_page', { templateUrl: 'resources/subpages/cfChangePasswordPage/changePassword_page.html' })
 
 }]);
