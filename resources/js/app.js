@@ -209,9 +209,6 @@ app.factory('Webapi', function ($http, $templateCache, $rootScope) {
     };
     
     return webapiSvc;
-    
-    
-
 });
 
 app.controller('appCtrl', ['$scope','$rootScope', function($scope, $rootScope){
