@@ -56,7 +56,7 @@
             </div>            
             <div class="cf-header-content" ng-include="'/resources/subpages/cfHeaderContent/cf_header_content.html'"></div>
         </div>
-        <div class="cf-content" ng-class="showMobileNavBar ? 'show-shadow' : ''">
+        <div class="cf-content" ng-class="showMobileNavBar ? 'show-shadow' : ''" ng-click="$root.showDropDown ? $root.toggleDropDown() : ''">
             <div class="cf-navigation" ng-include="'/resources/subpages/cfNavigation/cf_navigation.html'" ng-class="{'show': showMobileNavBar, 'minify': minLeftNav}" ng-show="showLeftNav"></div>
             <div class="cf-viewport" ng-view ng-click="showMobileNavBar ? toggleMobileNavBar() : ''"></div>
         </div>

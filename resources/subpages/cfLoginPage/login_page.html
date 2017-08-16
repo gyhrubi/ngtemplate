@@ -2,7 +2,7 @@
 	<div class="page-row row">       
         <div class="page-wrapper col-xs-12 col-sm-8 col-md-6 col-lg-4">
            
-            <div class="user-out-box" ng-if="!user.isAuthenticated" ng-enter="validateInputs() ? $timeout(login,1000) : ''">
+            <div class="user-out-box" ng-if="!user.isAuthenticated" ng-enter="validateInputs() ? login() : ''">
 
                 <h1 class="cf-box-pagetitle">Bejelentkezés</h1>
                 <div class="company-logo"></div>            
@@ -17,7 +17,7 @@
                    <div class="icon-container">
                         <i class="ion-key field-icon"></i>
                     </div>
-                    <input type="password" id="userPasswordInput" placeholder="Jelszó" ng-model="$parent.jsz" class="login-field form-control" ng-focus="scrollTo('userPasswordInput')">
+                    <input type="password" id="userPasswordInput" placeholder="Jelszó" ng-model="$parent.jsz" class="login-field form-control" ng-focus="scrollTo('userPasswordInput')" ng-click="resetError()">
                 </div>
 
                 <div class="checkbox-container">
@@ -26,7 +26,7 @@
                     <a href="#/forgottenpw">Elfelejtett jelszó?</a>
                 </div>
 
-                <button class="btn cf-primary" ng-click="validateInputs() ? $timeout(login,1000) : ''">Belépés</button>
+                <button class="btn cf-primary" ng-click="validateInputs() ? login() : ''">Belépés</button>
 
                 <div class="link-container">
                     <a href="#/forgotpassword">Új felhasználó? <strong>Regisztráció</strong></a>

@@ -59,6 +59,13 @@ app.run(function ($rootScope,$http) {
     
     // Domain kiszolgáló neve
     $rootScope.domainName = "";
+    
+    //TopNav DropDown
+    $rootScope.toggleDropDown = function() {
+            
+        $rootScope.showDropDown = !$rootScope.showDropDown;
+          
+    }
 
 });
 
@@ -249,4 +256,5 @@ app.directive('ngEnter', function () {
         });
     };
 });
+
     
