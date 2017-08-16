@@ -78,6 +78,7 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/profile', { templateUrl: 'resources/subpages/userprofile_page/userprofile_page.html' })
     .when('/info', { templateUrl: 'resources/subpages/cfInfoPage/info_page.html' })
     .when('/change_password_page', { templateUrl: 'resources/subpages/cfChangePasswordPage/changePassword_page.html' })
+    .when('/profile', { templateUrl: 'resources/subpages/cfUserprofilePage/userprofile_page.html' })
 
 }]);
 
@@ -220,9 +221,6 @@ app.factory('Webapi', function ($http, $templateCache, $rootScope) {
     };
     
     return webapiSvc;
-    
-    
-
 });
 
 app.controller('appCtrl', ['$scope','$rootScope', function($scope, $rootScope){

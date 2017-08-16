@@ -1,0 +1,127 @@
+@import "../../css/g_variables.less";
+.userprofile_pageCtrl{
+   
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    overflow-y: auto;      
+
+    .page-row {
+        width: 100%;
+        display: flex;
+        justify-content: ;
+        margin: 0;
+    }
+
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: ;
+        background-color: #ffffff;
+        border: solid 0.5px rgba(59, 59, 59, 0.21);
+        box-shadow: 5px 5px 5px rgba(52, 52, 52, 0.31);   
+        margin: 7px;
+    } 
+ 
+    @media screen and (max-width: 768px) {
+        .page-wrapper {
+            margin: 0;
+            padding: 0;
+        }
+        .content, .form_container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+        
+    .cf-field-error {
+        text-align: center;
+    }
+    
+    .disabled {
+        background-color: #dedede;
+    }
+    
+    .buttoncontainer {
+        margin-top: 15px;
+        padding-right: 15px;
+        display: flex;
+        justify-content: space-around;
+        button {
+            margin-bottom: 15px;
+        }
+    }
+    
+    .buttoncontainer:last-child {
+        margin-top: 0;
+    }
+        
+    .modal-dialog {
+        position: fixed;
+        top: 50px;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        .modal-body {
+            margin-bottom: 0;
+        }
+        .modal-footer {
+            padding: 0 15px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .form-content {
+            padding-left: 15px;
+        }
+        div {
+            margin-bottom: 10px;
+        }        
+    }
+    
+    form {
+        span {
+            padding-right: 0;
+        }
+        div {
+            padding-right: ;
+        }
+    }
+    
+    @media only screen and (max-width: 768px) {
+        .buttoncontainer {
+            flex-direction: column;
+            align-items: center;
+        }
+        .modal-footer, .form-content {
+            flex-direction: column;
+            align-items: center;
+            .btn {
+                margin-left: 0;
+            }
+            button{
+                margin-bottom: 10px;
+            }
+        }
+        .form-container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    
+    .modifyUserDataSuccesText {
+        color: green;
+        margin-bottom: 10px;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .modifyUserDataErrorText {
+        color: red;
+        margin-bottom: 10px;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    
+}
