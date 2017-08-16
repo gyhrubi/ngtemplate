@@ -137,6 +137,12 @@ app.factory('Webapi', function ($http, $templateCache, $rootScope) {
         return promise;
     };
     
+   webapiSvc.getLostPw = function (username) {
+        var data = { db: 'wautlocal', username: username };
+        var promise = getJson(data, 'lostpw');
+        return promise;
+    };
+    
     webapiSvc.handle_users = function (u_id, sname, lname, pw, enabled, operator, email) {
         var data = {
             "db": "wautlocal",
