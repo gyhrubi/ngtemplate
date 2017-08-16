@@ -1,0 +1,40 @@
+<div ng-controller="info_pageCtrl" class="info_pageCtrl">
+<div class="page-row row">
+        <div class="page-wrapper col-xs-12 col-sm-12 col-md-10 col-lg-12">
+            <div class="cf-pagetitle">
+                Névjegy
+            </div>
+            <form class="content clearfix">
+                <div class="introduction_text">
+                    <p1>Verzió: 57.0.2987.133</p1>
+                </div>
+                <div class="row content">
+                    <div class="fresh_version">
+                        <button class="btn btn-info" ng-click="checkCurrentVersion()">Friss verzió keresése</button>
+                    </div>
+                    <div class="restart" ng-if="openHtmlBehind() === true">
+                        <span class="glyphicon glyphicon-ok col-lg-1 col-md-1 col-sm-1 col-xs-1"></span>
+                        <p1 class="restart_text col-lg-11 col-md-11 col-sm-11 col-xs-11">Már majdnem naprakész! Indítsa újra a bőngésző programot a frissítés befejezéséhez</p1>
+                        <div class="restart_buttons col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="restart_btn col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-12">
+                            <button class="btn btn-danger" ng-click="Reloadthecurrentpage()">Újraindítás</button> 
+                        </div>
+                         <div class="problem_send_btn col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                             <div class="problem_send">
+                            <button class="btn btn-warning">Probléma bejelentése</button>
+                        </div>
+                         </div>
+                    </div>
+                    </div>
+                    <div class="contacts contacts_text">
+                        <p1>Fejlesztő cég: Com-Forth Ipari Informatikai Kft.<br>
+                            Elérhetőségek: 1134 Budapest, Róbert Károly krt. 82-84. <br>
+                            „B” épület fsz. (Cooper Center)<br>
+                            Tel: +36-1-413 7198, +36-1-413 7199</p1>
+                    </div>
+                </div>
+            </form>        
+        </div>
+    </div>
+</div>
+
