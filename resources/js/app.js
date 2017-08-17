@@ -237,6 +237,17 @@ app.factory('Webapi', function ($http, $templateCache, $rootScope) {
         var promise = getJson(data, 'lostpw');
         return promise;
     };
+    
+    webapiSvc.reset_password = function(newPw) {
+        var data = {
+        db: "wautlocal", 
+        pars: {
+            newPw: newPw
+            }
+        };
+        var promise = getJson(data, 'resetpw');
+        return promise;
+    };
 
     
     return webapiSvc;

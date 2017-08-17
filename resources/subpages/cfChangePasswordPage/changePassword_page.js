@@ -7,7 +7,7 @@
         function changePassword_pageCtrl($scope, $http, $rootScope, $sce, $timeout,Webapi,$routeParams) {
         var vm = this;
         
-        sessionStorage.setItem("token", $routeParams.temptoken);     
+        sessionStorage.setItem("token", $routeParams.temptoken);
             
         $rootScope.pageTitle = 'Jelszómódosítás képernyő';
 
@@ -132,10 +132,10 @@
             $timeout(function(){$scope.showLoading = false},1000);
         };
         
-        // WebApi, SQL kommunikáció de még hiányzik a tárolt eljárás!!
+        // WebApi, SQL kommunikáció de még hiányzik a tárolt eljárás!                  
         $scope.changePasswordSend = function() {           
             
-            var promise = Webapi.handle_users(null, $scope.user.reg_username_input, $scope.user.reg_surname_input +" " + $scope.user.reg_familyname_input, $scope.user.reg_password_input, 1, "", $scope.user.reg_email_input);
+            var promise = Webapi.reset_password(user.password);
 
 
             promise.success(function (data) {

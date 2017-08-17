@@ -19,8 +19,7 @@ app.controller('cfForgottenPwCtrl', ['$scope', '$http', '$rootScope', 'Webapi', 
                     
                 }
             });
-        
-        };
+    };
     
    
     
