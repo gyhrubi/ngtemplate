@@ -227,6 +227,22 @@ app.factory('Webapi', function ($http, $templateCache, $rootScope) {
             return retVal;
     };
     
+    webapiSvc.lost_password_token = function(userName, emailAddress) {
+        var data = {
+                "db": "waut", 
+                "action": "lost_password_token",
+                "pars": {
+                    "userName": userName, 
+                    "emailAddress": emailAddress
+                },
+                log: {
+                    "enabled":true,
+                }
+            };
+        var promise = getJson(data);
+        return promise;
+    };
+    
     return webapiSvc;
 });
 
