@@ -2,10 +2,12 @@
     'use strict';
 
     angular.module('app')
-        .controller('changePassword_pageCtrl', ['$scope', '$http', '$rootScope', '$sce','$timeout' ,'Webapi', changePassword_pageCtrl]);
+        .controller('changePassword_pageCtrl', ['$scope', '$http', '$rootScope', '$sce','$timeout' ,'Webapi','$routeParams', changePassword_pageCtrl]);
     
-        function changePassword_pageCtrl($scope, $http, $rootScope, $sce, $timeout,Webapi) {
+        function changePassword_pageCtrl($scope, $http, $rootScope, $sce, $timeout,Webapi,$routeParams) {
         var vm = this;
+        
+        sessionStorage.setItem("token", $routeParams.temptoken);     
             
         $rootScope.pageTitle = 'Jelszómódosítás képernyő';
 

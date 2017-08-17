@@ -9,7 +9,7 @@
                <div class="icon-container">
                     <i class="ion-email field-icon"></i>
                 </div>
-                <input type="email" id="userEmailInput" placeholder="E-mail cím" class="login-field form-control" ng-focus="scrollTo('userPasswordInput')">
+                <input type="text" id="userEmailInput" ng-model="lostUser" placeholder="E-mail cím" class="login-field form-control">
             </div>
             <div class="choice-container">
                 <button class="btn cf-primary" ng-click="iLostMyPassword()">Küldés</button>

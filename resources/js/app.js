@@ -83,8 +83,8 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/registration_page', { templateUrl: 'resources/subpages/cfRegistrationPage/registration_page.html'})
     .when('/admin', { templateUrl: 'resources/subpages/cfAdminPage/cf_admin_page.html' })
     .when('/profile', { templateUrl: 'resources/subpages/userprofile_page/userprofile_page.html' })
-    .when('/info', { templateUrl: 'resources/subpages/cfInfoPage/info_page.html' })
-    .when('/change_password_page', { templateUrl: 'resources/subpages/cfChangePasswordPage/changePassword_page.html' })
+    .when('/info', { templateUrl: 'resources/subpages/cfInfoPage/info_page.html'})
+    .when('/change_password_page/:temptoken', { templateUrl: 'resources/subpages/cfChangePasswordPage/changePassword_page.html', controller: 'changePassword_pageCtrl' })
     .when('/profile', { templateUrl: 'resources/subpages/cfUserprofilePage/userprofile_page.html' })
 
 }]);
@@ -227,21 +227,17 @@ app.factory('Webapi', function ($http, $templateCache, $rootScope) {
             return retVal;
     };
     
-    webapiSvc.lost_password_token = function(userName, emailAddress) {
+    webapiSvc.lost_password_token = function(userName) {
         var data = {
-                "db": "waut", 
-                "action": "lost_password_token",
-                "pars": {
-                    "userName": userName, 
-                    "emailAddress": emailAddress
-                },
-                log: {
-                    "enabled":true,
-                }
-            };
-        var promise = getJson(data);
+            db: "wautlocal", 
+            pars: {
+                "userName": userName
+            }
+        };
+        var promise = getJson(data, 'lostpw');
         return promise;
     };
+
     
     return webapiSvc;
 });
