@@ -8,6 +8,7 @@
         var vm = this;
         
         sessionStorage.setItem("token", $routeParams.temptoken);
+        $http.defaults.headers.common.Authorization = $routeParams.temptoken;
             
         $rootScope.pageTitle = 'Jelszómódosítás képernyő';
 
@@ -122,20 +123,21 @@
             $scope.showLoading = true;
             
             if ($scope.checkSameInputFieldsMatch()) {
-                $timeout($scope.registerUser,1000);
+                $scope.changePasswordSend();
             } 
             else {
-                $scope.valueWarningMessages="A két megadott jelszó nem egyezik!" ;  
+                $scope.valueWarningMessages="A két megadott jelszó nem egyezik!" ;
+                $scope.showLoading = false;
             }
             $scope.changePasswordSucces = '';
             $scope.changePasswordError = '';
-            $timeout(function(){$scope.showLoading = false},1000);
+            
         };
         
         // WebApi, SQL kommunikáció de még hiányzik a tárolt eljárás!                  
         $scope.changePasswordSend = function() {           
             
-            var promise = Webapi.reset_password(user.password);
+            var promise = Webapi.reset_password($scope.user.reg_password_input);
 
 
             promise.success(function (data) {
