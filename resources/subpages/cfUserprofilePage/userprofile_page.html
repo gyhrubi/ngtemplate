@@ -5,6 +5,12 @@
                 Felhasználói adatlap
             </div>
             <div class="form-container col-xs-12 col-sm-12 col-md-8 col-lg-6">
+                <select name="userlist" id="userlist" ng-change="getUserData()" ng-model="selectedUser">
+                    <option ng-repeat="user in users" value="{{user.sname}}">{{user.sname}}</option>
+                </select>
+            
+            </div>
+            <div class="form-container col-xs-12 col-sm-12 col-md-8 col-lg-6">
                 <form class="content col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-content {{ formElement.divClass }}" ng-repeat="formElement in formElements">
                         <label for="{{ formElement.inputID }}" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">{{ formElement.labelText }}:<span class="cf-required-star">{{ formElement.requiredStar }}</span></label>
@@ -23,7 +29,7 @@
                         <button id="myBtn" type="button" class="btn btn-primary col-lg-5 col-md-5 col-sm-5 col-xs-12" data-toggle="modal" data-target="#change_password" data-backdrop="static" ng-hide="!isDisabled" ng-click="initPage()">Jelszó módosítása</button>
                     </div>
                     <div class="buttoncontainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <button type="submit" class="btn btn-primary col-lg-5 col-md-5 col-sm-5 col-xs-12" ng-show="!isDisabled" ng-click="checkFields()">Módosítások mentése</button>
+                        <button type="submit" class="btn btn-primary col-lg-5 col-md-5 col-sm-5 col-xs-12" ng-show="!isDisabled" ng-click="modifyUserData()">Módosítások mentése</button>
                         <button type="button" class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-12" ng-show="!isDisabled" ng-click="toggleButtonsAndDisabled(); initPage()">Mégse</button>
                     </div>
                 </form>

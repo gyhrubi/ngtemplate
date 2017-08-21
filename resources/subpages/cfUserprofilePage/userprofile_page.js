@@ -144,11 +144,10 @@
             $scope.getUserData();
         };
 
-
         
         // User adatainak megjelenítése (frissítése)         
         $scope.getUserData = function () {
-            var promise = Webapi.list_users("0", /*$rootScope.user.username*/ "user1", 1);
+            var promise = Webapi.list_users("0", /*$rootScope.user.username*/ /*"user1"*/ $scope.selectedUser, 1);
             promise.success(function (data) {
                 if (Webapi.isError(data)) {
                     if (console) {
@@ -171,10 +170,33 @@
         $scope.getUserData();
         
 
+        /////////////////////////////////////////////////////////////////////////////
+        // User adatainak megjelenítése (frissítése)         
+        $scope.getUserList = function () {
+            var promise = Webapi.list_users();
+            promise.success(function (data) {
+                if (Webapi.isError(data)) {
+                    if (console) {
+                    }
+                    //e.error(data);
+                } else {
+                    $scope.users = data;
+                    //$scope.selectedUser = document.getElementById("userlist").value;
+                    //console.log($scope.selectedUser);
+
+                    //if (console) console.log($scope.usersAdminGrid.dataSet);
+                    //e.success(data);
+                }
+            });
+        };
+
+        $scope.getUserList();
         
         
         // Input mezők ellenőrzése 
         $scope.checkFields = function () {
+            $scope.modifyUserDataSuccess = "";
+            $scope.modifyUserDataError = "";
             // A kötelező mezők ki vannak töltve
             if (($scope.userData.email !== "") && ($scope.userData.familyname !== "") && ($scope.userData.surname !== "") && ($scope.userData.email !== undefined) && ($scope.userData.familyname !== undefined) && ($scope.userData.surname !== undefined)) {
                 return true;
@@ -187,23 +209,28 @@
         
         //User adatainak módosítása     
         $scope.modifyUserData = function () {
-            var promise = Webapi.handle_users($scope.userData.userID, $scope.userData.username, $scope.userData.familyname/* + " " + $scope.userData.surname*/, "", 1, "", $scope.userData.email);
-            promise.success(function (data) {
-                if (Webapi.isError(data)) {
-                    if (console) console.log(data);
-                } else {
-                    $scope.modifyUserDataSuccess = 'A felhasználói adatokat sikeresen megváltoztatta!';
+            if ($scope.checkFields()) {
+                var promise = Webapi.handle_users($scope.userData.userID, $scope.userData.username, $scope.userData.familyname/* + " " + $scope.userData.surname*/, "", 1, "", $scope.userData.email);
+                promise.success(function (data) {
+                    if (Webapi.isError(data)) {
+                        if (console) console.log(data);
+                    } else {
+                        $scope.modifyUserDataSuccess = 'A felhasználói adatokat sikeresen megváltoztatta!';
 
-                    $scope.toggleButtonsAndDisabled();
-                }
-            });
-            promise.error(function (reason) {
-                if (console) console.log(reason);
-                $scope.modifyUserDataError = 'A felhasználói adatok megváltoztatása nem sikerült!';
-            });
-            $scope.showLoading = false;
+                        $scope.toggleButtonsAndDisabled();
+                    }
+                });
+                promise.error(function (reason) {
+                    if (console) console.log(reason);
+                    $scope.modifyUserDataError = 'A felhasználói adatok megváltoztatása nem sikerült!';
+                });
+                $scope.showLoading = false;
+            } else {
+                $scope.modifyUserDataError = 'Töltse ki a kötelező mezőket!';
+            }
         };
 
+        
         
         
         // Jelszóváltoztatás oldal init
