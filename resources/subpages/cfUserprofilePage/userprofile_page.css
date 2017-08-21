@@ -38,6 +38,9 @@
 .userprofile_pageCtrl .disabled {
   background-color: #dedede;
 }
+.userprofile_pageCtrl .form-content {
+  padding-bottom: 10px;
+}
 .userprofile_pageCtrl .buttoncontainer {
   margin-top: 15px;
   padding-right: 15px;
@@ -59,8 +62,15 @@
 }
 .userprofile_pageCtrl .modal-dialog .modal-body {
   margin-bottom: 0;
+  padding-bottom: 0;
 }
 .userprofile_pageCtrl .modal-dialog .modal-footer {
+  text-align: left;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.userprofile_pageCtrl .modal-dialog .modal-footer-buttons {
   padding: 0 15px;
   display: flex;
   justify-content: space-around;
@@ -70,6 +80,14 @@
 }
 .userprofile_pageCtrl .modal-dialog div {
   margin-bottom: 10px;
+}
+.userprofile_pageCtrl .modal-dialog .pw_success {
+  color: green;
+  font-size: 120%;
+}
+.userprofile_pageCtrl .modal-dialog .pw_error {
+  color: red;
+  font-size: 120%;
 }
 .userprofile_pageCtrl form span {
   padding-right: 0;
@@ -82,16 +100,16 @@
     flex-direction: column;
     align-items: center;
   }
-  .userprofile_pageCtrl .modal-footer,
+  .userprofile_pageCtrl .modal-footer-buttons,
   .userprofile_pageCtrl .form-content {
     flex-direction: column;
     align-items: center;
   }
-  .userprofile_pageCtrl .modal-footer .btn,
+  .userprofile_pageCtrl .modal-footer-buttons .btn,
   .userprofile_pageCtrl .form-content .btn {
     margin-left: 0;
   }
-  .userprofile_pageCtrl .modal-footer button,
+  .userprofile_pageCtrl .modal-footer-buttons button,
   .userprofile_pageCtrl .form-content button {
     margin-bottom: 10px;
   }
@@ -100,17 +118,24 @@
     padding-right: 0;
   }
 }
-.userprofile_pageCtrl .modifyUserDataSuccesText {
+.userprofile_pageCtrl .succes-text {
   color: green;
   margin-bottom: 10px;
   font-size: 20px;
   display: flex;
   justify-content: center;
 }
-.userprofile_pageCtrl .modifyUserDataErrorText {
+.userprofile_pageCtrl .error-text {
   color: red;
   margin-bottom: 10px;
   font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+.userprofile_pageCtrl .error-small-text {
+  color: red;
+  margin-bottom: 10px;
+  font-size: ;
   display: flex;
   justify-content: center;
 }

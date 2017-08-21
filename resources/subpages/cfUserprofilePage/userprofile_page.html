@@ -6,13 +6,16 @@
             </div>
             <div class="form-container col-xs-12 col-sm-12 col-md-8 col-lg-6">
                 <form class="content col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-content" ng-repeat="formElement in formElements" class="{{ formElement.divClass }}">
+                    <div class="form-content {{ formElement.divClass }}" ng-repeat="formElement in formElements">
                         <label for="{{ formElement.inputID }}" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">{{ formElement.labelText }}:<span class="cf-required-star">{{ formElement.requiredStar }}</span></label>
                         <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                            <input type="{{ formElement.inputType }}" id="{{ formElement.inputID }}" class="cf-inputfield col-lg-10 col-md-10 col-sm-11 col-xs-11" ng-class="{'disabled': isDisabled || formElement.isDisabled === 'disabled'}" ng-model="userData[formElement.inputVariable]" ng-disabled="formElement.isDisabled || isDisabled" ng-required={{formElement.isRequired}}>
+                            <input type="{{ formElement.inputType }}" id="{{ formElement.inputID }}" class="cf-inputfield col-lg-10 col-md-10 col-sm-11 col-xs-11" ng-class="{'disabled': isDisabled || formElement.isDisabled === 'disabled'}" ng-model="userData[formElement.inputVariable]" ng-disabled="formElement.isDisabled || isDisabled" ng-required={{formElement.isRequired}} ng-change="checkFields()">
                             <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 ion-information-circled"></span>
                         </div>
-                        <p class="cf-field-error col-lg-7 col-md-7 col-sm-7 col-xs-11">{{ formElement.errorMessage}}</p>
+                        <div class="row">
+                            <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show=!userData[formElement.inputVariable]>{{ formElement.errorMessage }}</p>
+                            <!--<p class="cf-field-error col-lg-7 col-md-7 col-sm-7 col-xs-11">{{ formElement.errorMessage }}</p>-->
+                        </div>
                     </div>
 
                     <div class="buttoncontainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -20,43 +23,55 @@
                         <button id="myBtn" type="button" class="btn btn-primary col-lg-5 col-md-5 col-sm-5 col-xs-12" data-toggle="modal" data-target="#change_password" data-backdrop="static" ng-hide="!isDisabled" ng-click="initPage()">Jelszó módosítása</button>
                     </div>
                     <div class="buttoncontainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <button type="submit" class="btn btn-primary col-lg-5 col-md-5 col-sm-5 col-xs-12" ng-show="!isDisabled" ng-click="modifyUserData()">Módosítások mentése</button>
-                        <button type="button" class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-12" ng-show="!isDisabled" ng-click="toggleButtonsAndDisabled()">Mégse</button>
+                        <button type="submit" class="btn btn-primary col-lg-5 col-md-5 col-sm-5 col-xs-12" ng-show="!isDisabled" ng-click="checkFields()">Módosítások mentése</button>
+                        <button type="button" class="btn btn-default col-lg-5 col-md-5 col-sm-5 col-xs-12" ng-show="!isDisabled" ng-click="toggleButtonsAndDisabled(); initPage()">Mégse</button>
                     </div>
                 </form>
-                <b class="modifyUserDataSuccesText col-lg-12 col-md-12 col-sm-12 col-xs-12">{{modifyUserDataSucces}}</b> 
-                <b class="modifyUserDataErrorText col-lg-12 col-md-12 col-sm-12 col-xs-12">{{modifyUserDataError}}</b> 
+                <b class="succes-text col-lg-12 col-md-12 col-sm-12 col-xs-12">{{modifyUserDataSuccess}}</b> 
+                <b class="error-text col-lg-12 col-md-12 col-sm-12 col-xs-12">{{modifyUserDataError}}</b> 
                 
                 <div class="modal" id="change_password" role="dialog">
                     <div class="modal-dialog">
 
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <button type="button" class="close" data-dismiss="modal" ng-click="initPasswordPage()">&times;</button>
                                 <h4 class="modal-title">Jelszó módosítása</h4>
                             </div>
                             <div class="modal-body clearfix">
                                 <form>
                                     <div class="form-content">
-                                        <div ng-repeat="newPasswordElement in newPasswordElements" class="{{ newPasswordElement.divClass }} clearfix">
+                                        <div ng-repeat="newPasswordElement in newPasswordElements" class="{{ newPasswordElement.divClass }} clearfix" id="{{ newPasswordElement.divClass }}">
                                             <label for="{{ newPasswordElement.inputID }}" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-10">{{ newPasswordElement.labelText }}:<span class="cf-required-star">*</span></label>
-                                            <input type="password" id="{{ newPasswordElement.inputID }}" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10" required ng-model="userData[newPasswordElement.inputID]" ng-change="validationInputPwdText(userData[newPasswordElement.inputID])">
-                                            <span class="info col-lg-1 col-md-1 col-sm-1 col-xs-1 glyphicon glyphicon-info-sign"></span>
+                                            <input type="password" id="{{ newPasswordElement.inputID }}" class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10" required ng-model="userData[newPasswordElement.inputVariable]" ng-change="checkPWfields()">
+                                            <span id="{{newPasswordElement.isPasswordOKicon}}"></span>
+                                            
+                                             <!--ng-change="validationInputPwdText(userData[newPasswordElement.inputID])"-->
                                         </div>
-                                        
+                                        <div class="show-password-checkbox col-lg-12 col-md-12 col-sm-12 col-xs-12">                                        
+                                            <label for="showHide">Mutasd a jelszót</label>
+                                            <input type="checkbox" id="showHide" ng-click="showHidePasswords()">
+                                        </div>
                                         <div class="msg-block">{{valueWarningMessages}}</div>
 
                                         <div id="password_strength_meter" ng-if="userData.new_password_input">
                                             <b> {{userPasswordstrength}}</b>
-                                            <div class="progress">
+                                            <!--<div class="progress">
                                                 <div class="progress-bar" role="progressbar" aria-valuenow="{{valueProgressBar}}" aria-valuemin="0" aria-valuemax="4" style="width:{{valueProgressBarWidth}}%; background:{{valueProgressBarBackgroundColor}}">{{valueProgressBarWidth}}%</div>
-                                            </div>
+                                            </div>-->
                                         </div>
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary col-lg-5 col-md-5 col-sm-6 col-xs-12">Módosítások mentése</button>
-                                        <button type="button" class="btn btn-default col-lg-5 col-md-5 col-sm-6 col-xs-12" data-dismiss="modal">Mégse</button>
+                                        <div class="modal-footer-buttons">
+                                            <button type="button" class="btn btn-primary col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-click="isCurrentPasswordOK()">Módosítások mentése</button>
+                                            <button type="button" class="btn btn-default col-lg-4 col-md-4 col-sm-6 col-xs-12" data-dismiss="modal"  ng-click="initPasswordPage()">Kilépés</button>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <b class="succes-text col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="modifyPasswordSuccess">{{modifyPasswordSuccess}}</b> 
+                                            <b class="error-text col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="modifyPasswordError">{{modifyPasswordError}}</b>
+                                            <b class="error-small-text col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-show="modifyPasswordSmallError">{{modifyPasswordSmallError}}</b>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -68,7 +83,13 @@
         </div>
     </div>
 
-
+    
+    
+    
+    
+<script>
+    
+</script>
 
 
 

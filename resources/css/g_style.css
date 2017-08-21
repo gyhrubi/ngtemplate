@@ -19,6 +19,11 @@ body {
   letter-spacing: 1px;
   word-spacing: 2px;
 }
+.cf-label {
+  font-family: 'Roboto', sans-serif;
+  color: rgba(0, 0, 0, 0.52);
+  font-size: 20px;
+}
 .cf-field-label {
   font-family: 'Roboto', sans-serif;
   color: rgba(0, 0, 0, 0.52);

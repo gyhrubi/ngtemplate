@@ -25,11 +25,17 @@
 }
 .login_pageCtrl .page-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   background-color: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.14);
   box-shadow: 5px 5px 5px rgba(103, 103, 103, 0.24);
+}
+.login_pageCtrl .user-out-box,
+.login_pageCtrl .user-in-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .login_pageCtrl .company-logo {
   min-width: 75%;
@@ -89,4 +95,13 @@
 }
 .login_pageCtrl .btn {
   width: 75%;
+}
+.login_pageCtrl .user-name-label {
+  font-family: 'Roboto', sans-serif;
+  color: #005662;
+  font-size: 24px;
+}
+.login_pageCtrl .logout-btn {
+  margin: 20px 0;
+  width: 50%;
 }

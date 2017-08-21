@@ -42,7 +42,9 @@
     .disabled {
         background-color: #dedede;
     }
-    
+    .form-content {
+        padding-bottom: 10px;
+    }
     .buttoncontainer {
         margin-top: 15px;
         padding-right: 15px;
@@ -65,8 +67,15 @@
         left: 0;
         .modal-body {
             margin-bottom: 0;
+            padding-bottom: 0;
         }
         .modal-footer {
+            text-align: left;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .modal-footer-buttons {
             padding: 0 15px;
             display: flex;
             justify-content: space-around;
@@ -76,7 +85,15 @@
         }
         div {
             margin-bottom: 10px;
-        }        
+        }
+        .pw_success {
+            color: green;
+            font-size: 120%;
+        }
+        .pw_error {
+            color: red;
+            font-size: 120%;
+        }
     }
     
     form {
@@ -93,13 +110,13 @@
             flex-direction: column;
             align-items: center;
         }
-        .modal-footer, .form-content {
+        .modal-footer-buttons, .form-content {
             flex-direction: column;
             align-items: center;
             .btn {
                 margin-left: 0;
             }
-            button{
+            button {
                 margin-bottom: 10px;
             }
         }
@@ -109,17 +126,24 @@
         }
     }
     
-    .modifyUserDataSuccesText {
+    .succes-text {
         color: green;
         margin-bottom: 10px;
         font-size: 20px;
         display: flex;
         justify-content: center;
     }
-    .modifyUserDataErrorText {
+    .error-text {
         color: red;
         margin-bottom: 10px;
         font-size: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .error-small-text {
+        color: red;
+        margin-bottom: 10px;
+        font-size: ;
         display: flex;
         justify-content: center;
     }

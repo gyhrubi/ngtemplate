@@ -56,6 +56,9 @@ app.run(function ($rootScope,$http) {
 
     // Állítsuk vissza a bejelentkezett felhasználó adatait
     $rootScope.restoreUserSession();
+    
+    // Domain kiszolgáló neve
+    $rootScope.domainName = "";
 
 });
 
