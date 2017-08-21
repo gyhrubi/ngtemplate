@@ -1,0 +1,10 @@
+CACHE MANIFEST
+#Új verzió: v1.0.4
+#Legutolsó módosítás dátuma: 2017-02-27
+#Változtatás oka: Új szolgáltatás.
+#END#
+
+CACHE:
+
+NETWORK:
+*

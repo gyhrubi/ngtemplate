@@ -36,10 +36,12 @@
             $scope.loading = !$scope.loading;
         }
         
+        $scope.resetError = function() {
+            $scope.loginError = false;
+        }
         
-        $scope.validateInputs = function() {
+        $scope.validateInputs = function() {            
             
-            $scope.showLoading = true;
             $scope.loginError = false;            
             
             if ($scope.fh.length == 0 || $scope.jsz.length == 0) {
@@ -58,6 +60,7 @@
         // Login function: 
         $scope.login = function (fnCallback) {
             
+            $scope.showLoading = true;
             $scope.errorMessage = "Sikertelen bejelentkezés.";          
             
             var promise = Webapi.login(($scope.isDomain ? $rootScope.domainName : undefined), $scope.fh, $scope.jsz);
@@ -74,6 +77,9 @@
                     $rootScope.user.expires = new Date(response.token[0].valid);
                     $rootScope.user.groups = response.groups;
                     $scope.errorMessage = "";
+                    if ($scope.$parent.toggleDropDown) {
+                        $scope.$parent.toggleDropDown();
+                    }
                 }
                 $scope.showLoading = false;
                 $rootScope.setUserSession();

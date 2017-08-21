@@ -13,9 +13,6 @@
   display: flex;
   justify-content: center;
 }
-.registration_pageCtrl .form-control {
-  width: auto;
-}
 .registration_pageCtrl .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -25,32 +22,66 @@
   box-shadow: 5px 5px 5px rgba(52, 52, 52, 0.31);
 }
 .registration_pageCtrl .content {
-  width: 75%;
-}
-.registration_pageCtrl .content label {
-  height: 34px;
+  width: 85%;
 }
 .registration_pageCtrl .cf-pagetitle {
   font-size: 30px;
 }
-.registration_pageCtrl .password-verdict {
-  color: #000;
+.registration_pageCtrl .field-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.registration_pageCtrl .input-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.registration_pageCtrl .input-field {
+  display: flex;
+  align-items: center;
+}
+.registration_pageCtrl .validation-icon {
+  width: 10px;
+}
+.registration_pageCtrl .input-container input {
+  margin-right: 5px;
+}
+.registration_pageCtrl .validation-message {
+  text-align: right;
+  height: 20px;
+  display: block;
+  margin-right: 15px;
+  color: #e74c3c;
 }
 .registration_pageCtrl .buttons {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
   margin-top: 20px;
 }
-.registration_pageCtrl .RegistrationSuccesText {
-  color: green;
-  margin-bottom: 10px;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
+.registration_pageCtrl .buttons button:last-child {
+  margin-right: 15px;
 }
-.registration_pageCtrl .RegistrationErrorText {
-  color: red;
+.registration_pageCtrl .registrationResult {
   margin-bottom: 10px;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
+  height: 20px;
+  font-size: 16px;
+  display: block;
+  text-align: center;
+}
+.registration_pageCtrl .result-success {
+  color: #27ae60;
+}
+.registration_pageCtrl .result-wrong {
+  color: #c0392b;
+}
+@media only screen and (max-width: 767px) {
+  .registration_pageCtrl .field-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .registration_pageCtrl .input-container {
+    width: 100%;
+  }
 }

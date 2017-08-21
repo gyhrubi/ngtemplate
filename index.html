@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="app">
+<html ng-app="app" manifest="WebApi.appcache">
     <head>
         <meta charset="UTF-8">
         <meta id="viewport" name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1, minimum-scale=1" />
@@ -24,6 +24,8 @@
         <link href="resources/subpages/cfLoginPage/login_page.css" type="text/css" rel="stylesheet">        
         <link href="resources/subpages/cfForgottenPw/cf_forgotten_pw.css" type="text/css" rel="stylesheet"> 
         <link href="resources/subpages/cfRegistrationPage/registration_page.css" type="text/css" rel="stylesheet">
+        <link href="resources/subpages/cfChangePasswordPage/changePassword_page.css" type="text/css" rel="stylesheet">
+        <link href="resources/subpages/cfInfoPage/info_page.css" type="text/css" rel="stylesheet">
         <link href="resources/subpages/cfUserprofilePage/userprofile_page.css" type="text/css" rel="stylesheet">
         <link href="resources/css/g_style.css" rel="stylesheet">
         <link href="resources/css/style.css" type="text/css" rel="stylesheet">
@@ -54,7 +56,7 @@
             </div>            
             <div class="cf-header-content" ng-include="'/resources/subpages/cfHeaderContent/cf_header_content.html'"></div>
         </div>
-        <div class="cf-content" ng-class="showMobileNavBar ? 'show-shadow' : ''">
+        <div class="cf-content" ng-class="showMobileNavBar ? 'show-shadow' : ''" ng-click="$root.showDropDown ? $root.toggleDropDown() : ''">
             <div class="cf-navigation" ng-include="'/resources/subpages/cfNavigation/cf_navigation.html'" ng-class="{'show': showMobileNavBar, 'minify': minLeftNav}" ng-show="showLeftNav"></div>
             <div class="cf-viewport" ng-view ng-click="showMobileNavBar ? toggleMobileNavBar() : ''"></div>
         </div>
@@ -71,6 +73,8 @@
     <script src="resources/subpages/cfForgottenPw/cf_forgotten_pw.js"></script>
     <script src="resources/subpages/cfAdminPage/cf_admin_page.js"></script>
     <script src="resources/subpages/cfRegistrationPage/registration_page.js"></script>
+    <script src="resources/subpages/cfChangePasswordPage/changePassword_page.js"></script>
+    <script src="resources/subpages/cfInfoPage/info_page.js"></script>
     <script src="resources/subpages/cfUserprofilePage/userprofile_page.js"></script>
 
 </html>

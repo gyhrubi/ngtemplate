@@ -1,18 +1,19 @@
 <div class="cfHeaderContentCtrl" ng-controller="cfHeaderContentCtrl">
     <div class="header-company-logo"></div>
     <div class="drop-down">
-        <div class="drop-down-btn" ng-click="toggleDropDown()">
+        <div class="drop-down-btn" ng-click="$root.toggleDropDown()">
             <i class="" ng-class="user.isAuthenticated ? 'ion-person' : 'ion-log-in'"></i>{{user.isAuthenticated ? user.fullname : 'Bejelentkezés'}}<i class="ion-arrow-down-b"></i>
         </div>
         
-        <div class="drop-down-content" ng-class="showDropDown ? 'show' : ''">
+        <div class="drop-down-content" ng-class="$root.showDropDown ? 'show' : ''">
             <div class="arrow-box">
-                <div class="loginDirective" ng-if="enableLoginPage ? true : false" ng-include="'/resources/subpages/cfLoginPage/login_page.html'"></div>
+                <div class="loginDirective" ng-if="!user.isAuthenticated" ng-include="'/resources/subpages/cfLoginPage/login_page.html'"></div>
                 <div class="drop-down-menu">
                     <ul>
-                        <li><a href="#/myprofile"><i class="ion-person"></i>Saját fiók</a></li>
-                        <li><a href="#/favorites"><i class="ion-star"></i>Kedvenc oldalak</a></li>
-                        <li><a href="#/about"><i class="ion-information-circled"></i>Weboldal névjegye</a></li>
+                        <li ng-show="user.isAuthenticated"><a href="#/profile"><i class="ion-person"></i>Saját fiók</a></li>
+                        <li ng-show="user.isAuthenticated"><a href="#/favorites"><i class="ion-star"></i>Kedvenc oldalak</a></li>
+                        <li><a href="#/info"><i class="ion-information-circled"></i>Weboldal névjegye</a></li>
+                        <li ng-click="logout()" ng-show="user.isAuthenticated"><i class="ion-log-out"></i>Kijelentkezés</li>
                     </ul>
                 </div>
             </div>         

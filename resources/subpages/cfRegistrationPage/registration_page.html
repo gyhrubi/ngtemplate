@@ -5,34 +5,31 @@
                 Regisztráció
             </div>
             <form class="content" name="myForm">
-               <div class="row">
-                <div ng-repeat="formElement in formElements" class="{{ formElement.divClass }}">
-                    <label for="{{ formElement.inputID }}" class="cf-field-label col-lg-5 col-md-5 col-sm-5 col-xs-12">{{ formElement.labelText }}:<span class="cf-required-star">*</span></label>
-                    <input type="{{ formElement.inputType }}" ng-model="user[formElement.inputID]" ng-change="validationInputPwdText(user[formElement.inputID])" id="{{ formElement.inputID }}" required class="cf-inputfield col-lg-6 col-md-6 col-sm-6 col-xs-10">
-                    <i class="ion-information-circled col-lg-1 col-md-1 col-sm-1 col-xs-1" data-toggle="tooltip" title= "{{ formElement.infoText }}"></i>                    
-                    <p class="cf-field-error col-lg-12 col-md-12 col-sm-12 col-xs-12"></p>
-                </div>
-                </div>
-                <div class="msg-block">{{valueWarningMessages}}</div>
-                
-                <div id="password_strength_meter" ng-if="user.reg_password_input">
-                <b> {{userPasswordstrength}}</b>   
-                    <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{valueProgressBar}}" aria-valuemin="0" aria-valuemax="4" style="width:{{valueProgressBarWidth}}%; background:{{valueProgressBarBackgroundColor}}">{{valueProgressBarWidth}}%</div>
+                 
+                <div class="field-container" ng-repeat="userField in userFields">                    
+                    <label for="{{'reg_field_' + $index}}" class="cf-field-label">{{userField.title}}:<span class="cf-required-star">*</span></label>
+                    <div class="input-container">
+                        <div class="input-field">
+                            <input type="{{userField.type}}" ng-model="userField.value" id="{{'reg_field_' + $index}}" class="cf-inputfield form-control" ng-change="resetResult(userField); userField.onChange ? userField.validate() : ''" >                        
+                            <div class="validation-icon">
+                                <i class="" ng-class="userField.isValid ? 'ion-checkmark-circled result-success' : 'ion-close-circled result-wrong'" ng-show="userField.iconShow"></i>
+                            </div>
+                        </div>                            
+                        <div class="validation-message">{{userField.validationMessage}}</div>    
                     </div>
                 </div>
+                
+                
                 <div class="cf-spinner" ng-show="showLoading">
                         <div class="dot1"></div>
                         <div class="dot2"></div>
                 </div>
+                <p class="registrationResult" ng-class="regResult ? 'result-success' : 'result-wrong'">{{regResultMessage}}</p>   
                 <div class="buttons">
                     <button class="btn btn-info" ng-click="registration()">Regisztrálok</button>
-                    <button class="btn btn-default col-lg-offset-6 col-md-offset-6 col-sm-offset-6 col-xs-offset-2">Mégse</button>
+                    <button class="btn btn-default">Mégse</button>
                 </div>
-                <b class="RegistrationSuccesText">{{RegistrationSucces}}</b> 
-                <b class="RegistrationErrorText">{{RegistrationError}}</b> 
-                
-            
+                             
             </form>        
         </div>
     </div>

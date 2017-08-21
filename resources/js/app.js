@@ -59,6 +59,13 @@ app.run(function ($rootScope,$http) {
     
     // Domain kiszolgáló neve
     $rootScope.domainName = "";
+    
+    //TopNav DropDown
+    $rootScope.toggleDropDown = function() {
+            
+        $rootScope.showDropDown = !$rootScope.showDropDown;
+          
+    }
 
 });
 
@@ -75,6 +82,9 @@ app.config(['$routeProvider', function($routeProvider){
     .when('/forgottenpw', { templateUrl: 'resources/subpages/cfForgottenPw/cf_forgotten_pw.html' })
     .when('/registration_page', { templateUrl: 'resources/subpages/cfRegistrationPage/registration_page.html'})
     .when('/admin', { templateUrl: 'resources/subpages/cfAdminPage/cf_admin_page.html' })
+    .when('/profile', { templateUrl: 'resources/subpages/userprofile_page/userprofile_page.html' })
+    .when('/info', { templateUrl: 'resources/subpages/cfInfoPage/info_page.html' })
+    .when('/change_password_page', { templateUrl: 'resources/subpages/cfChangePasswordPage/changePassword_page.html' })
     .when('/profile', { templateUrl: 'resources/subpages/cfUserprofilePage/userprofile_page.html' })
 
 }]);
@@ -134,6 +144,12 @@ app.factory('Webapi', function ($http, $templateCache, $rootScope) {
     webapiSvc.logout = function () {
         var data = { db: 'wautlocal' };
         var promise = getJson(data, 'logout');
+        return promise;
+    };
+    
+   webapiSvc.getLostPw = function (username) {
+        var data = { db: 'wautlocal', username: username };
+        var promise = getJson(data, 'lostpw');
         return promise;
     };
     
@@ -240,4 +256,5 @@ app.directive('ngEnter', function () {
         });
     };
 });
+
     
